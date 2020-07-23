@@ -39,6 +39,7 @@ txt_sum = findViewById(R.id.sum_price);
 			sum += sahamListItems.get(i).getStocksValue();
 
 		}
+		sahamListModel.setSum_price(sum);
 		txt_sum.setText(String.valueOf(sum));
 
 
