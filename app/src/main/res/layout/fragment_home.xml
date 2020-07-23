@@ -59,7 +59,7 @@
                 android:textColor="#EF0E0E" />
 
             <com.robinhood.ticker.TickerView
-                app:ticker_animationDuration="500"
+                app:ticker_animationDuration="1000"
                 app:ticker_defaultCharacterList="number"
                 android:id="@+id/tv_saham_arzesh"
                 android:layout_width="0dp"
@@ -89,7 +89,7 @@
                 android:textColor="#EF0E0E" />
 
             <com.robinhood.ticker.TickerView
-                app:ticker_animationDuration="500"
+                app:ticker_animationDuration="1000"
                 app:ticker_defaultCharacterList="number"
                 android:id="@+id/tv_saham_price"
                 android:layout_width="0dp"
@@ -451,7 +451,6 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:background="?attr/selectableItemBackground"
-
                     android:gravity="center"
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -480,8 +479,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="لیست سهام"
-android:textColor="#000"
+                            android:text="سوالات متداول"
+                            android:textColor="#000"
                             android:textStyle="bold"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"

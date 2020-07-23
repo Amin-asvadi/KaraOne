@@ -29,7 +29,7 @@ public class SplashScreen extends AppCompatActivity {
 				startActivity(i);
 				finish();
 			}
-		}, 5000); // ----Main Activity Start After 3 Sec.
+		}, 2500); // ----Main Activity Start After 3 Sec.
 
 	}
 }
