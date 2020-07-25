@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <set xmlns:android="http://schemas.android.com/apk/res/android">
-<rotate android:pivotX="500000000000000000000000000000%"
+<rotate android:pivotX="50%"
     android:pivotY="50%"
     android:toDegrees="2520"
     android:fromDegrees="0"
