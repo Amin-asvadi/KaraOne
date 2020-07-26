@@ -6,7 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ui.inquirySahamActivity.InquirySahamActvity">
 
+    <ImageView
+       android:id="@+id/inquiry_imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_logo_rotate"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <WebView
+android:visibility="gone"
         android:id="@+id/inquiry_webview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

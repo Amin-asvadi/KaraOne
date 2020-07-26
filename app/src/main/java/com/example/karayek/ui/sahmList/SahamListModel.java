@@ -1,78 +1,99 @@
 package com.example.karayek.ui.sahmList;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class SahamListModel {
-	int id;
-	String group;
-	String title;
-	int count;
-	float livePrice;
-	float stocksValue;
-	float sum_price;
+
+    @SerializedName("CoID")
+    @Expose
+    int id;
+
+    String group;
+	@SerializedName("BourseSymbol")
+	@Expose
+    String title;
+    @SerializedName("TradeQty")
+    @Expose
+    int count;
+
+	@SerializedName("LastPrice")
+	@Expose
+    float livePrice;
+    @SerializedName("MaxPrice")
+    @Expose
+    float stocksValue;
+    @SerializedName("OpeningPrice")
+    @Expose
+    float sum_price;
 
 
+    public SahamListModel(String group, String title, int count, float livePrice, float stocksValue) {
+        this.group = group;
+        this.title = title;
+        this.count = count;
+        this.livePrice = livePrice;
+        this.stocksValue = stocksValue;
+    }
+/*
 
-	public SahamListModel(String group, String title, int count, float livePrice, float stocksValue) {
-		this.group = group;
-		this.title = title;
-		this.count = count;
-		this.livePrice = livePrice;
-		this.stocksValue = stocksValue;
-	}
+    public SahamListModel() {
+    }
+*/
 
-	public SahamListModel() {
-	}
+    public float getSum_price() {
+        return sum_price;
+    }
 
-	public float getSum_price() {
-		return sum_price;
-	}
+    public void setSum_price(float sum_price) {
+        this.sum_price = sum_price;
+    }
 
-	public void setSum_price(float sum_price) {
-		this.sum_price = sum_price;
-	}
-	public String getGroup() {
-		return group;
-	}
+    public String getGroup() {
+        return group;
+    }
 
-	public void setGroup(String group) {
-		this.group = group;
-	}
-	public int getId() {
-		return id;
-	}
+    public void setGroup(String group) {
+        this.group = group;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public int getCount() {
-		return count;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setCount(int count) {
-		this.count = count;
-	}
+    public int getCount() {
+        return count;
+    }
 
-	public float getLivePrice() {
-		return livePrice;
-	}
+    public void setCount(int count) {
+        this.count = count;
+    }
 
-	public void setLivePrice(float livePrice) {
-		this.livePrice = livePrice;
-	}
+    public float getLivePrice() {
+        return livePrice;
+    }
 
-	public float getStocksValue() {
-		return stocksValue;
-	}
+    public void setLivePrice(float livePrice) {
+        this.livePrice = livePrice;
+    }
 
-	public void setStocksValue(float stocksValue) {
-		this.stocksValue = stocksValue;
-	}
+    public float getStocksValue() {
+        return stocksValue;
+    }
+
+    public void setStocksValue(float stocksValue) {
+        this.stocksValue = stocksValue;
+    }
 }

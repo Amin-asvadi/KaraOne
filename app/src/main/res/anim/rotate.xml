@@ -2,7 +2,7 @@
 <set xmlns:android="http://schemas.android.com/apk/res/android">
 <rotate android:pivotX="50%"
     android:pivotY="50%"
-    android:toDegrees="2520"
+    android:toDegrees="2550"
     android:fromDegrees="0"
     android:duration ="7000"></rotate>
 </set>

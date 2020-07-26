@@ -50,7 +50,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 		homeViewModel =
 				ViewModelProviders.of(this).get(HomeViewModel.class);
 		root = inflater.inflate(R.layout.fragment_home_final, container, false);
-		sahamListModel = new SahamListModel();
+	//	sahamListModel = new SahamListModel();
 		tv_saham_price = root.findViewById(R.id.tv_saham_price);
 		tv_saham_arzesh = root.findViewById(R.id.tv_saham_arzesh);
 
