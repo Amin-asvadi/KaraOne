@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.karayek.R;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 public class SahamListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
@@ -33,21 +34,29 @@ public class SahamListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 	@Override
 	public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
 
- SahamListModel sahamListModel = items.get(position);
- final ViewHolder vh = (ViewHolder) holder;
- vh.list_group.setText(sahamListModel.getGroup());
- vh.title_sahm.setText(sahamListModel.getTitle());
- vh.list_count.setText(String.valueOf(sahamListModel.getCount()));
- vh.live_price.setText(String.valueOf(sahamListModel.getLivePrice()));
- vh.stocks_value.setText(String.valueOf(sahamListModel.getStocksValue()));
-/*
-		float sum  = 0;
+		SahamListModel sahamListModel = items.get(position);
+
+ //SahamListModel sm = new SahamListModel();
+		DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
+
+	 final ViewHolder vh = (ViewHolder) holder;
+	 vh.list_group.setText(sahamListModel.getGroup());
+	 vh.title_sahm.setText(sahamListModel.getTitle());
+	 vh.list_count.setText(String.valueOf(sahamListModel.getCount()));
+		String live_price = decimalFormat.format(sahamListModel.getLivePrice());
+	 vh.live_price.setText(live_price);
+
+		String stocks_value = decimalFormat.format((sahamListModel.getLivePrice() * sahamListModel.getCount()));
+
+	vh.stocks_value.setText(stocks_value);
+
+/*	float sum  = 0;
  for (int i = 0 ;i < items.size();i++){
- 	sum += items.get(i).getStocksValue();
+ 	sum += sahamListModel.getLivePrice() * sahamListModel.getCount();
 
  }
-		sahamListModel.setSum_price(sum);
-*/
+		sahamListModel.setSum_price(sum);*/
+
 
 	}
 

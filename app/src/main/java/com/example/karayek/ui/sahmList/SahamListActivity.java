@@ -77,10 +77,26 @@ getCompanies();
 		call.enqueue(new Callback<List<SahamListModel>>() {
 			@Override
 			public void onResponse(Call<List<SahamListModel>> call, Response<List<SahamListModel>> response) {
+				SahamListModel sahamListModel = new SahamListModel();
+				int[] countStock ={22,61,1822,1427,9,117,627,4,41,49,16,237,1,12,3,9,8,48,116,1276,23,80,107,763,3,45,5,49,42,1168,0,0};
+		int i = 0;
 				if (response.isSuccessful()){
 					List<SahamListModel> sahmList =response.body();
+					for (SahamListModel s  :sahmList){
+						s.setCount(countStock[i]);
+						i++;
+					}
 					rc_stock_value = findViewById(R.id.rc_stock_value);
 					sahamListItems = (ArrayList<SahamListModel>) sahmList;
+
+		int sum  = 0;
+
+		for (int j =0 ; j < sahmList.size() ; j++){
+			sum += (sahmList.get(j).getCount() * sahmList.get(j).getLivePrice());
+
+		}
+		sahamListModel.setSum_price(sum);
+		txt_sum.setText(String.valueOf(sum));
 					sahamListAdapter = new SahamListAdapter(sahamListItems,SahamListActivity.this);
 					LinearLayoutManager linearLayoutManager = new LinearLayoutManager
 							(SahamListActivity.this,LinearLayoutManager.VERTICAL,false);
