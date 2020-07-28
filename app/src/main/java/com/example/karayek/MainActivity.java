@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.hide();
-		img_drawer = findViewById(R.id.img_drawer);
+		//img_drawer = findViewById(R.id.img_drawer);
 
 
 	drawer = findViewById(R.id.drawer_layout);

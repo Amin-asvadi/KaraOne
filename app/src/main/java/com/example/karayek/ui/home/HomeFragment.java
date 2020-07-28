@@ -29,6 +29,8 @@ import com.example.karayek.ui.sell_activity.SellActivity;
 import com.example.karayek.ui.splashScreen.SplashScreen;
 import com.robinhood.ticker.TickerView;
 
+import java.text.DecimalFormat;
+
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
 	private LinearLayout btn_change_number;
@@ -64,10 +66,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 			@Override
 			public void run() {
-				final String currencyFloat = Integer.toString(19125987);
-
-				tv_saham_price.setText(currencyFloat.substring(0, Math.min(9, currencyFloat.length())));
-				tv_saham_arzesh.setText(currencyFloat.substring(0, Math.min(9, currencyFloat.length())));
+				DecimalFormat saham_price_decimal = new DecimalFormat("###,###,###");
+				String saham_price = saham_price_decimal.format(205633386);
+				String saham_arzesh = saham_price_decimal.format(411266772);
+				//final String saham_price = Integer.toString(189398594);
+				//final String saham_arzesh = Integer.toString(378797188);
+				tv_saham_price.setText(saham_price.substring(0, Math.min(11, saham_price.length())));
+				tv_saham_arzesh.setText(saham_arzesh.substring(0, Math.min(11, saham_arzesh.length())));
 			}
 		}, 2000); // ----Main Activity Start After 3 Sec.
 

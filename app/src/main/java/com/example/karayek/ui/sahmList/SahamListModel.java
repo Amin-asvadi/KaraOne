@@ -5,20 +5,20 @@ import com.google.gson.annotations.SerializedName;
 
 public class SahamListModel {
 
-    @SerializedName("CoID")
+    @SerializedName("id")
     @Expose
     int id;
-
+    @SerializedName("BourseSymbol")
+    @Expose
     String group;
-	@SerializedName("BourseSymbol")
-	@Expose
+    @SerializedName("FullTitle")
+    @Expose
     String title;
-/*    @SerializedName("TradeQty")
-    @Expose*/
+    @SerializedName("count")
+    @Expose
     int count;
-
-	@SerializedName("LastPrice")
-	@Expose
+    @SerializedName("LastPrice")
+    @Expose
     int livePrice;
     /*@SerializedName("MaxPrice")
     @Expose*/

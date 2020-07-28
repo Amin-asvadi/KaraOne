@@ -68,7 +68,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="نماد سهم" />
+                android:text="نام شرکت" />
 
             <View
                 style="@style/DividerVertical"
@@ -80,7 +80,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="0.6"
                 android:gravity="center"
-                android:text="گروه" />
+                android:text="نماد" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

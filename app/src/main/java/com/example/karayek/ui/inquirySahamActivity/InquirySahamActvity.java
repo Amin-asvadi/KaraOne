@@ -37,10 +37,10 @@ public class InquirySahamActvity extends AppCompatActivity {
 		}, 7000); // ----Main Activity Start After 3 Sec.
 
 		inquiry_saham_vewbview = findViewById(R.id.inquiry_webview);
-		inquiry_saham_vewbview.loadUrl("https://panel.sahamedalat.ir/");
+		inquiry_saham_vewbview.loadUrl("https://samanese.ir/start");
 
 	WebSettings webSettings = inquiry_saham_vewbview.getSettings();
-		webSettings.setJavaScriptEnabled(false);
+		webSettings.setJavaScriptEnabled(true);
 	}
 	@Override
 	public void onBackPressed() {

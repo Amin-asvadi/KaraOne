@@ -8,12 +8,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.karayek.MainActivity;
 import com.example.karayek.R;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -77,35 +79,31 @@ getCompanies();
 		call.enqueue(new Callback<List<SahamListModel>>() {
 			@Override
 			public void onResponse(Call<List<SahamListModel>> call, Response<List<SahamListModel>> response) {
-				SahamListModel sahamListModel = new SahamListModel();
-				int[] countStock ={22,61,1822,1427,9,117,627,4,41,49,16,237,1,12,3,9,8,48,116,1276,23,80,107,763,3,45,5,49,42,1168,0,0};
-		int i = 0;
+				sahamListModel = new SahamListModel();
 				if (response.isSuccessful()){
-					List<SahamListModel> sahmList =response.body();
-					for (SahamListModel s  :sahmList){
-						s.setCount(countStock[i]);
-						i++;
+					List<SahamListModel> saham_Live = response.body();
+
+					rc_stock_value =findViewById(R.id.rc_stock_value);
+
+					sahamListItems = (ArrayList<SahamListModel>) saham_Live;
+					int sum  = 0;
+
+					for (int j =0 ; j < saham_Live.size() ; j++){
+						sum += (saham_Live.get(j).getCount() * saham_Live.get(j).getLivePrice());
+
 					}
-					rc_stock_value = findViewById(R.id.rc_stock_value);
-					sahamListItems = (ArrayList<SahamListModel>) sahmList;
-
-		int sum  = 0;
-
-		for (int j =0 ; j < sahmList.size() ; j++){
-			sum += (sahmList.get(j).getCount() * sahmList.get(j).getLivePrice());
-
-		}
-		sahamListModel.setSum_price(sum);
-		txt_sum.setText(String.valueOf(sum));
+					sahamListModel.setSum_price(sum);
+					DecimalFormat saham_price_decimal = new DecimalFormat("###,###,###");
+					String saham_price = saham_price_decimal.format(sum);
+					txt_sum.setText(saham_price);
 					sahamListAdapter = new SahamListAdapter(sahamListItems,SahamListActivity.this);
-					LinearLayoutManager linearLayoutManager = new LinearLayoutManager
-							(SahamListActivity.this,LinearLayoutManager.VERTICAL,false);
+					LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SahamListActivity.this, LinearLayoutManager.VERTICAL, false);
 					rc_stock_value.setLayoutManager(linearLayoutManager);
 					rc_stock_value.setAdapter(sahamListAdapter);
 
-
 				}else {
-					Toast.makeText(SahamListActivity.this, response.code(), Toast.LENGTH_SHORT).show();
+					Log.e("ERROR",String.valueOf(response.code()));
+					Toast.makeText(SahamListActivity.this, String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
 
 				}
 			}
