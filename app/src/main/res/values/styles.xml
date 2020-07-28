@@ -23,6 +23,11 @@
         <item name="android:layout_height">match_parent</item>
         <item name="android:background">@color/dividerColor</item>
     </style>
+    <style name="DividerVerticalItem">
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">#C7D0DC</item>
+    </style>
     <style name="DividerVerticalSplash">
         <item name="android:layout_width">2dp</item>
         <item name="android:layout_height">match_parent</item>

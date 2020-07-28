@@ -20,8 +20,8 @@ WebView webView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sell_whith__khobre);
-        rotateImg = findViewById(R.id.img_rotae_sell_donya);
+        setContentView(R.layout.activity_mobile_number);
+/*        rotateImg = findViewById(R.id.img_rotae_sell_donya);
 
         rotateAnimation = AnimationUtils.loadAnimation(this,R.anim.rotate);
         rotateImg.setAnimation(rotateAnimation);
@@ -51,7 +51,7 @@ WebView webView;
         }else{
 
             super.onBackPressed();
-        }
+        }*/
 
     }
 }

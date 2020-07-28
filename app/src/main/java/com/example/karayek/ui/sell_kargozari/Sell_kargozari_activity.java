@@ -38,7 +38,7 @@ public class Sell_kargozari_activity extends AppCompatActivity {
         }, 7000);  // ----Main Activity Start After 3 Sec.
 
         webView = findViewById(R.id.sell_kargozar_webView);
-        webView.loadUrl("https://samanese.ir/start");
+        webView.loadUrl("https://se-abco.rayanbroker.ir");
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 

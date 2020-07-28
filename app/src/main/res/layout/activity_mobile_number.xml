@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F1E8"
-    tools:context=".ui.moblieNumber.MobileNumberActivity">
+    tools:context="com.example.karayek.ui.sell_khobre_webView.Sell_whith_Khobre">
 
     <EditText
         android:id="@+id/editText"
@@ -14,6 +14,7 @@
         android:background="@drawable/beck_ed_text"
         android:hint="شماره همراه"
         android:padding="10dp"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="5:1"
         app:layout_constraintEnd_toEndOf="parent"
@@ -27,6 +28,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/beck_ed_text"
         android:hint="کد ملی"
+        android:inputType="number"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editText"
