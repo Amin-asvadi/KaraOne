@@ -9,11 +9,13 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.karayek.MainActivity;
 import com.example.karayek.R;
+import com.example.karayek.ui.databse.DbSql;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -28,18 +30,21 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class SahamListActivity extends AppCompatActivity {
 
 SahamListAdapter sahamListAdapter;
-ArrayList<SahamListModel> sahamListItems = new ArrayList<>();
+ private List <SahamListModel> sahamListItems = new ArrayList<>();
 SahamListModel sahamListModel;
 Context context = this;
 RecyclerView rc_stock_value;
 TextView txt_sum;
+
+	private DbSql dbSQL = new DbSql(context);
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_saham_list);
 
-txt_sum = findViewById(R.id.sum_price);
+		init();
+
 	/* sahamListModel = new SahamListModel();
 
 		sahamListItems = new ArrayList<>();
@@ -62,10 +67,26 @@ txt_sum = findViewById(R.id.sum_price);
 		rc_stock_value.setLayoutManager(linearLayoutManager);
 		rc_stock_value.setAdapter(sahamListAdapter);*/
 
+getNimMelioon();
 
-getCompanies();
+	}
 
+	private void init() {
 
+		txt_sum = findViewById(R.id.sum_price);
+		rc_stock_value =findViewById(R.id.rc_stock_value);
+		sahamListItems = dbSQL.ShowData();
+
+	}
+
+	private void getNimMelioon() {
+
+		sahamListAdapter  =new SahamListAdapter(sahamListItems,SahamListActivity.this);
+		LinearLayoutManager linearLayoutManager = new LinearLayoutManager
+				(SahamListActivity.this,LinearLayoutManager.VERTICAL,false);
+		rc_stock_value.setLayoutManager(linearLayoutManager);
+		rc_stock_value.setAdapter(sahamListAdapter);
+		txt_sum.setText(sahamListItems.get(1).getSum_price());
 	}
 
 	private void getCompanies() {
@@ -83,16 +104,16 @@ getCompanies();
 				if (response.isSuccessful()){
 					List<SahamListModel> saham_Live = response.body();
 
-					rc_stock_value =findViewById(R.id.rc_stock_value);
+
 
 					sahamListItems = (ArrayList<SahamListModel>) saham_Live;
 					int sum  = 0;
 
 					for (int j =0 ; j < saham_Live.size() ; j++){
-						sum += (saham_Live.get(j).getCount() * saham_Live.get(j).getLivePrice());
+						sum += (Integer.valueOf( saham_Live.get(j).getCount() )* Integer.valueOf(saham_Live.get(j).getLivePrice()) );
 
 					}
-					sahamListModel.setSum_price(sum);
+					sahamListModel.setSum_price(String.valueOf(sum));
 					DecimalFormat saham_price_decimal = new DecimalFormat("###,###,###");
 					String saham_price = saham_price_decimal.format(sum);
 					txt_sum.setText(saham_price);

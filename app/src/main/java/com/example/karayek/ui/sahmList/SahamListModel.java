@@ -16,24 +16,25 @@ public class SahamListModel {
     String title;
     @SerializedName("count")
     @Expose
-    int count;
+    String count;
     @SerializedName("LastPrice")
     @Expose
-    int livePrice;
+    String livePrice;
     /*@SerializedName("MaxPrice")
     @Expose*/
-    int stocksValue;
+    String stocksValue;
     /*@SerializedName("OpeningPrice")
     @Expose*/
-    int sum_price;
+    String sum_price;
 
 
-    public SahamListModel(String group, String title, int count, int livePrice, int stocksValue) {
+    public SahamListModel(String group, String title, String count, String livePrice, String stocksValue,String sum_price) {
         this.group = group;
         this.title = title;
         this.count = count;
         this.livePrice = livePrice;
         this.stocksValue = stocksValue;
+        this.sum_price = sum_price;
     }
 
 
@@ -41,11 +42,11 @@ public class SahamListModel {
     }
 
 
-    public float getSum_price() {
+    public String getSum_price() {
         return sum_price;
     }
 
-    public void setSum_price(int sum_price) {
+    public void setSum_price(String sum_price) {
         this.sum_price = sum_price;
     }
 
@@ -73,27 +74,27 @@ public class SahamListModel {
         this.title = title;
     }
 
-    public int getCount() {
+    public String getCount() {
         return count;
     }
 
-    public void setCount(int count) {
+    public void setCount(String count) {
         this.count = count;
     }
 
-    public int getLivePrice() {
+    public String getLivePrice() {
         return livePrice;
     }
 
-    public void setLivePrice(int livePrice) {
+    public void setLivePrice(String livePrice) {
         this.livePrice = livePrice;
     }
 
-    public float getStocksValue() {
+    public String getStocksValue() {
         return stocksValue;
     }
 
-    public void setStocksValue(int stocksValue) {
+    public void setStocksValue(String stocksValue) {
         this.stocksValue = stocksValue;
     }
 }

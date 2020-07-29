@@ -43,10 +43,10 @@ public class SahamListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         vh.list_group.setText(sahamListModel.getGroup());
         vh.title_sahm.setText(sahamListModel.getTitle());
         vh.list_count.setText(String.valueOf(sahamListModel.getCount()));
-        String live_price = decimalFormat.format(sahamListModel.getLivePrice());
+        String live_price = decimalFormat.format(Integer.valueOf(sahamListModel.getLivePrice()) );
         vh.live_price.setText(live_price);
 
-        String stocks_value = decimalFormat.format((sahamListModel.getLivePrice() * sahamListModel.getCount()));
+       String stocks_value = decimalFormat.format((Integer.valueOf(sahamListModel.getStocksValue())));
 
         vh.stocks_value.setText(stocks_value);
 

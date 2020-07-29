@@ -1,5 +1,6 @@
 package com.example.karayek.ui.home;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +20,7 @@ import androidx.lifecycle.ViewModelProviders;
 import com.example.karayek.MainActivity;
 import com.example.karayek.R;
 import com.example.karayek.ui.change_shaba_number.Change_shaba_number;
+import com.example.karayek.ui.databse.DbSql;
 import com.example.karayek.ui.ejectSaham.EjectSahamActivity;
 import com.example.karayek.ui.inquirySahamActivity.InquirySahamActvity;
 import com.example.karayek.ui.moblieNumber.MobileNumberActivity;
@@ -30,6 +32,8 @@ import com.example.karayek.ui.splashScreen.SplashScreen;
 import com.robinhood.ticker.TickerView;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
@@ -41,6 +45,8 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 	private LinearLayout btn_inquiry_saham;
 	private LinearLayout btn_quset;
 	SahamListModel sahamListModel;
+	private List<SahamListModel> sahamListItems = new ArrayList<>();
+	private DbSql dbSQL ;
 	View root;
 	TickerView tv_saham_price;
 	TickerView tv_saham_arzesh;
@@ -52,10 +58,12 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 		homeViewModel =
 				ViewModelProviders.of(this).get(HomeViewModel.class);
 		root = inflater.inflate(R.layout.fragment_home_final, container, false);
+	dbSQL = new DbSql(getActivity());
 	//	sahamListModel = new SahamListModel();
 		tv_saham_price = root.findViewById(R.id.tv_saham_price);
 		tv_saham_arzesh = root.findViewById(R.id.tv_saham_arzesh);
-
+//sahamListModel = new SahamListModel();
+sahamListItems = dbSQL.ShowData();
 
 		tv_saham_price.setPreferredScrollingDirection(TickerView.ScrollingDirection.UP);
 		tv_saham_arzesh.setPreferredScrollingDirection(TickerView.ScrollingDirection.UP);
@@ -67,8 +75,9 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 			@Override
 			public void run() {
 				DecimalFormat saham_price_decimal = new DecimalFormat("###,###,###");
-				String saham_price = saham_price_decimal.format(205633386);
-				String saham_arzesh = saham_price_decimal.format(411266772);
+				int sumSahm = Integer.valueOf(sahamListItems.get(1).getSum_price());
+				String saham_price = saham_price_decimal.format(sumSahm);
+				String saham_arzesh = saham_price_decimal.format((sumSahm * 2));
 				//final String saham_price = Integer.toString(189398594);
 				//final String saham_arzesh = Integer.toString(378797188);
 				tv_saham_price.setText(saham_price.substring(0, Math.min(11, saham_price.length())));

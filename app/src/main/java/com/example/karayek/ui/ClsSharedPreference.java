@@ -116,11 +116,18 @@ public class ClsSharedPreference {
     private static final String CONFIG = "config";
     private static final String REY_CHAT_URL = "raychat_link";
     private static final String BASCKET_LIST_EXPIRE = "bascket_list_expire";
+    private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
 
 
     private SharedPreferences pref;
     private SharedPreferences prefsetting;
-
+    public boolean isFirstTimeLaunch() {
+        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
+    }
+    public void setFirstTimeLaunch(boolean isFirstTime) {
+        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
+        editor.commit();
+    }
     public ClsSharedPreference(Context context) {
         pref = context.getSharedPreferences(PREFNAMELGIN, 0);
         prefsetting = context.getSharedPreferences(PRESETTING, 0);
