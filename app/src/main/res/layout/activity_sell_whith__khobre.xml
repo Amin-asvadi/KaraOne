@@ -4,12 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorPrimary"
     tools:context="com.example.karayek.ui.sell_khobre_webView.Sell_whith_Khobre">
-    <ImageView
+    <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/img_rotae_sell_donya"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_logo_rotate"
+        android:layout_width="100dp"
+        app:SpinKit_Color="#d45100"
+        android:layout_height="100dp"
+style="@style/SpinKitView.CubeGrid"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

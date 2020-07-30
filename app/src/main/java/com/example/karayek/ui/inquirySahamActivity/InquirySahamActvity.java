@@ -13,11 +13,12 @@ import android.widget.ImageView;
 
 import com.example.karayek.R;
 import com.example.karayek.ui.questactivity.QuestionActivity;
+import com.github.ybq.android.spinkit.SpinKitView;
 
 public class InquirySahamActvity extends AppCompatActivity {
 	WebView inquiry_saham_vewbview;
 	Animation rotateAnimation;
-	ImageView rotateImg;
+	SpinKitView rotateImg;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

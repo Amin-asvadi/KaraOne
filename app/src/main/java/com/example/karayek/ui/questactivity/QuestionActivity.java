@@ -15,11 +15,12 @@ import android.widget.ImageView;
 import com.example.karayek.MainActivity;
 import com.example.karayek.R;
 import com.example.karayek.ui.splashScreen.SplashScreen;
+import com.github.ybq.android.spinkit.SpinKitView;
 
 public class QuestionActivity extends AppCompatActivity {
 	WebView qestion_webView;
 	Animation rotateAnimation;
-	ImageView rotateImg;
+	SpinKitView rotateImg;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

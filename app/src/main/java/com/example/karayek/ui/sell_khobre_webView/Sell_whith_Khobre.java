@@ -12,10 +12,11 @@ import android.webkit.WebView;
 import android.widget.ImageView;
 
 import com.example.karayek.R;
+import com.github.ybq.android.spinkit.SpinKitView;
 
 public class Sell_whith_Khobre extends AppCompatActivity {
 WebView webView;
-    ImageView rotateImg;
+    SpinKitView rotateImg;
     Animation rotateAnimation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
