@@ -3,14 +3,12 @@ package com.example.karayek.ui.splashScreen;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
@@ -20,12 +18,9 @@ import com.example.karayek.MainActivity;
 import com.example.karayek.R;
 import com.example.karayek.ui.ClsSharedPreference;
 import com.example.karayek.ui.databse.DbSql;
-import com.example.karayek.ui.sahmList.SahamListActivity;
-import com.example.karayek.ui.sahmList.SahamListAdapter;
 import com.example.karayek.ui.sahmList.SahamListInterFace;
 import com.example.karayek.ui.sahmList.SahamListModel;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -175,6 +170,29 @@ public class SplashScreen extends AppCompatActivity {
 
                         }
                     } else {
+
+                        for (int j = 0; j < saham_Live.size(); j++) {
+                            //sahamListModel.setSum_price(String.valueOf(sum));
+                            int multySum = (sum * 2);
+                            int stockValue = (Integer.valueOf(saham_Live.get(j).getCount()) * Integer.valueOf(saham_Live.get(j).getLivePrice()));
+                            int multystock = (stockValue * 2);
+                            int multyCount = (Integer.valueOf(saham_Live.get(j).getCount()) * 2);
+                            dbSQL.Update_One(new SahamListModel(
+                                    saham_Live.get(j).getGroup(), saham_Live.get(j).getTitle()
+                                    , String.valueOf(multyCount), saham_Live.get(j).getLivePrice()
+                                    , String.valueOf(multystock), String.valueOf(multySum)), Integer.valueOf(j + 1));
+                            Toast.makeText(SplashScreen.this, "updated", Toast.LENGTH_SHORT).show();
+                        }
+                        for (int i = 0; i < saham_Live.size(); i++) {
+                            sahamListModel.setSum_price(String.valueOf(sum));
+                            int stockValue = (Integer.valueOf(saham_Live.get(i).getCount()) * Integer.valueOf(saham_Live.get(i).getLivePrice()));
+
+                            dbSQL.Update(new SahamListModel(
+                                    saham_Live.get(i).getGroup(), saham_Live.get(i).getTitle()
+                                    , saham_Live.get(i).getCount(), saham_Live.get(i).getLivePrice()
+                                    , String.valueOf(stockValue), String.valueOf(sum)), i);
+                            Toast.makeText(SplashScreen.this, "updated", Toast.LENGTH_SHORT).show();
+                        }
 
                         Toast.makeText(SplashScreen.this, "EXIST", Toast.LENGTH_SHORT).show();
 

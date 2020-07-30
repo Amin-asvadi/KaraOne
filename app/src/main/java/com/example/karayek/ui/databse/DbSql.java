@@ -168,7 +168,23 @@ public class DbSql extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         database.delete(TABLENAME, "id=" + id, null);
     }
-    public void Update (SahamListModel data,int id)
+    public void Update_One(SahamListModel data, int id)
+    {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(BOURSESYMBOL_ONE, data.getGroup());
+        values.put(FULLTITLE_ONE, data.getTitle());
+        values.put(COUNT_ONE, data.getCount());
+        values.put(LASTPRICE_ONE, data.getLivePrice());
+        values.put(STOCKVALUE_ONE, data.getStocksValue());
+        values.put(SUMPRICE_ONE, data.getSum_price());
+
+
+        database.update(TABLENAME_ONE,values,"id_one=" + id,null);
+        database.close();
+    }
+    public void Update(SahamListModel data, int id)
     {
         SQLiteDatabase database = this.getWritableDatabase();
         ContentValues values = new ContentValues();

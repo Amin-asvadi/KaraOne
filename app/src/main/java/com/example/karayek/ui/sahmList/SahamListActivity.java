@@ -9,7 +9,9 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +37,7 @@ SahamListModel sahamListModel;
 Context context = this;
 RecyclerView rc_stock_value;
 TextView txt_sum;
+ImageView data_change;
 
 	private DbSql dbSQL = new DbSql(context);
 
@@ -75,6 +78,7 @@ getNimMelioon();
 
 		txt_sum = findViewById(R.id.sum_price);
 		rc_stock_value =findViewById(R.id.rc_stock_value);
+		data_change = findViewById(R.id.data_change);
 		sahamListItems = dbSQL.ShowData();
 
 	}
@@ -118,6 +122,16 @@ getNimMelioon();
 					String saham_price = saham_price_decimal.format(sum);
 					txt_sum.setText(saham_price);
 					sahamListAdapter = new SahamListAdapter(sahamListItems,SahamListActivity.this);
+					data_change.setOnClickListener(new View.OnClickListener() {
+						@Override
+						public void onClick(View v) {
+							Toast.makeText(SahamListActivity.this, "clicked", Toast.LENGTH_SHORT).show();
+							sahamListItems = dbSQL.ShowDataOne();
+
+							sahamListAdapter = new SahamListAdapter(sahamListItems,SahamListActivity.this);
+							sahamListAdapter.notifyDataSetChanged();
+						}
+					});
 					LinearLayoutManager linearLayoutManager = new LinearLayoutManager(SahamListActivity.this, LinearLayoutManager.VERTICAL, false);
 					rc_stock_value.setLayoutManager(linearLayoutManager);
 					rc_stock_value.setAdapter(sahamListAdapter);
