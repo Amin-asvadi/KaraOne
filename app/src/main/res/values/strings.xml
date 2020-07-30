@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">کارا 1</string>
+    <string name="app_name">سهام عدالت کارا</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
@@ -10,4 +10,5 @@
     <string name="menu_home"></string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+    <string name="trust">هزینه انجام خدمات ۲۰,000  تومان میباشد برای ادامه و ثبت درخواست رو دکمه تایید را بفشارید</string>
 </resources>

@@ -10,28 +10,27 @@ import android.view.animation.AnimationUtils;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.karayek.R;
+import com.github.ybq.android.spinkit.SpinKitView;
 
 public class Sell_kargozari_activity extends AppCompatActivity {
     WebView webView;
-    ImageView rotateImg;
-    Animation rotateAnimation;
-
+    SpinKitView rotateImg;
+    TextView txt_inprogress;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sell_kargozari_activity);
         rotateImg = findViewById(R.id.img_rotae_sell_kargozari);
-
-        rotateAnimation = AnimationUtils.loadAnimation(this,R.anim.rotate);
-        rotateImg.setAnimation(rotateAnimation);
+txt_inprogress = findViewById(R.id.txt_inprogress_kargozari);
         new Handler().postDelayed(new Runnable() {
 
 
             @Override
             public void run() {
-
+                txt_inprogress.setVisibility(View.GONE);
                 rotateImg.setVisibility(View.GONE);
                 webView.setVisibility(View.VISIBLE);
             }

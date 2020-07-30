@@ -12,25 +12,32 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.karayek.R;
+import com.example.karayek.ui.databse.DbSql;
+import com.example.karayek.ui.sahmList.SahamListModel;
 import com.example.karayek.ui.sell_kargozari.Sell_kargozari_activity;
 import com.example.karayek.ui.sell_khobre_webView.Sell_whith_Khobre;
 import com.robinhood.ticker.TickerView;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SellActivity extends AppCompatActivity {
 	LinearLayout btn_sell_noya_khobre,btn_sell_kargozri;
 	ImageView img_back;
 	TickerView tv_saham_price;
 	TickerView tv_saham_arzesh;
-
+	private List<SahamListModel> sahamListItems = new ArrayList<>();
+	private DbSql dbSQL ;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_sell);
-
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.hide();
+		dbSQL = new DbSql(this);
+		sahamListItems = dbSQL.ShowData();
+
 		init();
 img_back = findViewById(R.id.img_back);
 img_back.setOnClickListener(new View.OnClickListener() {
@@ -77,8 +84,9 @@ img_back.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void run() {
 				DecimalFormat saham_price_decimal = new DecimalFormat("###,###,###");
-				String saham_price = saham_price_decimal.format((205633386 / 100)  * 30);
-				String saham_arzesh = saham_price_decimal.format((411266772 / 100 ) * 30);
+				int sumSahm = Integer.valueOf(sahamListItems.get(1).getSum_price());
+				String saham_price = saham_price_decimal.format((sumSahm / 100)  * 30);
+				String saham_arzesh = saham_price_decimal.format(((sumSahm  * 2) / 100 ) * 30);
 				//final String saham_price = Integer.toString(189398594);
 				//final String saham_arzesh = Integer.toString(378797188);
 				tv_saham_price.setText(saham_price.substring(0, Math.min(11, saham_price.length())));

@@ -3,19 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="@color/colorPrimary"
     android:layout_height="match_parent"
-    tools:context="com.example.karayek.ui.sell_khobre_webView.Sell_whith_Khobre">
+    android:background="@color/main_back"
+    tools:context="com.example.karayek.ui.sell_kargozari.Sell_kargozari_activity">
+
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/img_rotae_sell_kargozari"
+        style="@style/SpinKitView.CubeGrid"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:SpinKit_Color="#d45100"
-        style="@style/SpinKitView.CubeGrid"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+    <TextView
+        android:id="@+id/txt_inprogress_kargozari"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="در حال بارگزاری اطلاعات"
+        android:textColor="#000"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/img_rotae_sell_kargozari"
+        app:layout_constraintStart_toStartOf="@+id/img_rotae_sell_kargozari"
+        app:layout_constraintTop_toBottomOf="@+id/sell_kargozar_webView"
+        app:layout_constraintVertical_bias="0.07999998" />
 
     <WebView
         android:id="@+id/sell_kargozar_webView"

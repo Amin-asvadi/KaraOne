@@ -44,6 +44,7 @@ public class QuestionActivity extends AppCompatActivity {
 
 
 		qestion_webView = findViewById(R.id.qestion_webView);
+		qestion_webView.clearCache(true);
 		qestion_webView.loadUrl("http://mashhadburse.ir/frequently-asked-questions/");
 		WebSettings webSettings = qestion_webView.getSettings();
 		webSettings.setJavaScriptEnabled(true);

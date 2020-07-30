@@ -165,7 +165,6 @@ public class SplashScreen extends AppCompatActivity {
                                     saham_Live.get(j).getGroup(), saham_Live.get(j).getTitle()
                                     , String.valueOf(multyCount), saham_Live.get(j).getLivePrice()
                                     , String.valueOf(multystock), String.valueOf(multySum)));
-                            Toast.makeText(SplashScreen.this, "insert", Toast.LENGTH_SHORT).show();
 
 
                         }
@@ -180,8 +179,7 @@ public class SplashScreen extends AppCompatActivity {
                             dbSQL.Update_One(new SahamListModel(
                                     saham_Live.get(j).getGroup(), saham_Live.get(j).getTitle()
                                     , String.valueOf(multyCount), saham_Live.get(j).getLivePrice()
-                                    , String.valueOf(multystock), String.valueOf(multySum)), Integer.valueOf(j + 1));
-                            Toast.makeText(SplashScreen.this, "updated", Toast.LENGTH_SHORT).show();
+                                    , String.valueOf(multystock), String.valueOf(multySum)), Integer.valueOf(j+1));
                         }
                         for (int i = 0; i < saham_Live.size(); i++) {
                             sahamListModel.setSum_price(String.valueOf(sum));
@@ -190,11 +188,9 @@ public class SplashScreen extends AppCompatActivity {
                             dbSQL.Update(new SahamListModel(
                                     saham_Live.get(i).getGroup(), saham_Live.get(i).getTitle()
                                     , saham_Live.get(i).getCount(), saham_Live.get(i).getLivePrice()
-                                    , String.valueOf(stockValue), String.valueOf(sum)), i);
-                            Toast.makeText(SplashScreen.this, "updated", Toast.LENGTH_SHORT).show();
+                                    , String.valueOf(stockValue), String.valueOf(sum)),Integer.valueOf(i+1) );
                         }
 
-                        Toast.makeText(SplashScreen.this, "EXIST", Toast.LENGTH_SHORT).show();
 
                     }
                     goToActivity();
