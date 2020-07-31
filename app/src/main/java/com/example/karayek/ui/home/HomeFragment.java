@@ -25,6 +25,7 @@ import com.example.karayek.ui.ejectSaham.EjectSahamActivity;
 import com.example.karayek.ui.inquirySahamActivity.InquirySahamActvity;
 import com.example.karayek.ui.moblieNumber.MobileNumberActivity;
 import com.example.karayek.ui.questactivity.QuestionActivity;
+import com.example.karayek.ui.sahamListTabs.SahamListTabsActivity;
 import com.example.karayek.ui.sahmList.SahamListActivity;
 import com.example.karayek.ui.sahmList.SahamListModel;
 import com.example.karayek.ui.sell_activity.SellActivity;
@@ -113,7 +114,7 @@ sahamListItems = dbSQL.ShowData();
 	public void onClick(View v) {
 		switch (v.getId()) {
 			case R.id.btn_list_saham:
-				Intent btn_saham = new Intent(getContext(), SahamListActivity.class);
+				Intent btn_saham = new Intent(getContext(), SahamListTabsActivity.class);
 				startActivity(btn_saham);
 				break;
 			/*case R.id.btn_change_number:

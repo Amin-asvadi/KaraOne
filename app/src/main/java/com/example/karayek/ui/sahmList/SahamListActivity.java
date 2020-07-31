@@ -1,21 +1,15 @@
 package com.example.karayek.ui.sahmList;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.karayek.MainActivity;
 import com.example.karayek.R;
 import com.example.karayek.ui.databse.DbSql;
 
@@ -76,7 +70,7 @@ getNimMelioon();
 	private void init() {
 
 		txt_sum = findViewById(R.id.sum_price);
-		rc_stock_value =findViewById(R.id.rc_stock_value);
+		rc_stock_value =findViewById(R.id.rc_stock_value_five_hundred);
 		sahamListItems = dbSQL.ShowData();
 
 	}
