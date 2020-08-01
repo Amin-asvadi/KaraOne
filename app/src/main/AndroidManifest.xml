@@ -14,20 +14,45 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.sahamListTabs.SahamListTabsActivity"></activity>
-        <activity android:name=".ui.sell_kargozari.Sell_kargozari_activity" />
-        <activity android:name=".ui.sell_khobre_webView.Sell_whith_Khobre" />
-        <activity android:name=".ui.questactivity.QuestionActivity" />
-        <activity android:name=".ui.inquirySahamActivity.InquirySahamActvity" />
-        <activity android:name=".ui.ejectSaham.EjectSahamActivity" />
-        <activity android:name=".ui.change_shaba_number.Change_shaba_number" />
-        <activity android:name=".ui.moblieNumber.MobileNumberActivity" />
-        <activity android:name=".ui.sell_activity.SellActivity" />
-        <activity android:name=".ui.splashScreen.SplashScreen">
+        <activity
+            android:name=".ui.sahamListTabs.SahamListTabsActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity
+            android:name=".ui.sell_kargozari.Sell_kargozari_activity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.sell_khobre_webView.Sell_whith_Khobre"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name=".ui.questactivity.QuestionActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.inquirySahamActivity.InquirySahamActvity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.ejectSaham.EjectSahamActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.change_shaba_number.Change_shaba_number"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.moblieNumber.MobileNumberActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".ui.sell_activity.SellActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".ui.splashScreen.SplashScreen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="app"/>
             </intent-filter>
         </activity>
         <activity android:name=".ui.sahmList.SahamListActivity" />

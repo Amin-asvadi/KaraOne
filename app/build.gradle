@@ -63,7 +63,10 @@ dependencies {
 
 
     ////////////////// LOADING DEPENDENCE ////////////////
-
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+
+    ///////////////// PAYMENT DEPENDENCE /////////////////
+
+    implementation ('com.zarinpal:purchase:0.0.8-beta'){ exclude group: 'com.mcxiaoke.volley', module: 'library' }
 
 }
