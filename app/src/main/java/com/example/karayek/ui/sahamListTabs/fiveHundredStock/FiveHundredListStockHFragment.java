@@ -18,6 +18,7 @@ import com.example.karayek.ui.sahmList.SahamListActivity;
 import com.example.karayek.ui.sahmList.SahamListAdapter;
 import com.example.karayek.ui.sahmList.SahamListModel;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -93,7 +94,9 @@ public class FiveHundredListStockHFragment extends Fragment {
                     (getContext(),LinearLayoutManager.VERTICAL,false);
             rc_stock_value.setLayoutManager(linearLayoutManager);
             rc_stock_value.setAdapter(fiveHunderedStockAdapter);
-           txt_sum.setText(sahamListItems.get(1).getSum_price());
+        DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
+        String sumprice = decimalFormat.format(Integer.valueOf(sahamListItems.get(1).getSum_price()));
+           txt_sum.setText(sumprice);
 
         return root;
 

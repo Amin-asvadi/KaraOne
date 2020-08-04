@@ -477,7 +477,7 @@
             android:layout_height="0dp"
             android:layout_marginTop="5dp"
             android:foregroundGravity="center"
-            android:scaleType="fitXY"
+
             android:src="@drawable/ic_tehroon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

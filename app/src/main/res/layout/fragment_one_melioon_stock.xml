@@ -2,7 +2,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#F2F1E8"
+    android:background="#FBFAEC"
     android:layout_height="match_parent"
     tools:context="com.example.karayek.ui.sahamListTabs.oneMelionStock.OneMelioonStockFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -15,7 +15,7 @@
             android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            app:cardBackgroundColor="#F6efd6"
+            app:cardBackgroundColor="#CCEADB"
             android:layout_margin="5dp"
             app:cardCornerRadius="15dp"
             app:cardElevation="3dp"
@@ -110,7 +110,7 @@
             android:id="@+id/linearLayout3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@drawable/back_sum"
+            android:background="@drawable/back_show_one"
             android:orientation="horizontal"
             android:weightSum="5"
             app:layout_constraintBottom_toBottomOf="parent"

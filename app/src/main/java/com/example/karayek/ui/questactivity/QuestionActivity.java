@@ -1,5 +1,6 @@
 package com.example.karayek.ui.questactivity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -19,7 +20,7 @@ import com.github.ybq.android.spinkit.SpinKitView;
 
 public class QuestionActivity extends AppCompatActivity {
 	WebView qestion_webView;
-	Animation rotateAnimation;
+ImageView img_back;
 	SpinKitView rotateImg;
 
 	@Override
@@ -27,8 +28,15 @@ public class QuestionActivity extends AppCompatActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_question);
 		rotateImg = findViewById(R.id.img_rotae);
-		rotateAnimation = AnimationUtils.loadAnimation(QuestionActivity.this,R.anim.rotate);
-		rotateImg.setAnimation(rotateAnimation);
+		ActionBar actionBar = getSupportActionBar();
+		actionBar.hide();
+		img_back = findViewById(R.id.img_back_quest);
+	/*	img_back.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+			}
+		});*/
 
 		new Handler().postDelayed(new Runnable() {
 

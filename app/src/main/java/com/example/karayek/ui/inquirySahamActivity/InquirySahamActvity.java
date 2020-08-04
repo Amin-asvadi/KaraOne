@@ -1,5 +1,6 @@
 package com.example.karayek.ui.inquirySahamActivity;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.fonts.Font;
@@ -21,13 +22,18 @@ public class InquirySahamActvity extends AppCompatActivity {
 	WebView inquiry_saham_vewbview;
 	Animation rotateAnimation;
 	SpinKitView rotateImg;
+	ImageView btn_back;
 	TextView txt_inprogress;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_inquiry_saham_actvity);
+		ActionBar actionBar = getSupportActionBar();
+		actionBar.hide();
 		rotateImg = findViewById(R.id.inquiry_imageView);
 		txt_inprogress = findViewById(R.id.txt_inprogress);
+
+		btn_back = findViewById(R.id.img_back_inqery);
 		//rotateAnimation = AnimationUtils.loadAnimation(this,R.anim.rotate);
 		//rotateImg.setAnimation(rotateAnimation);
 		new Handler().postDelayed(new Runnable() {

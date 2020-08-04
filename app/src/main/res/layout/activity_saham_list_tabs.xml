@@ -5,28 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.karayek.ui.sahamListTabs.SahamListTabsActivity">
+
+    <include
+        android:id="@+id/include4"
+        layout="@layout/layout_toolbar_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout_singel"
         android:layout_width="match_parent"
-        app:tabIndicatorColor="@color/colorPrimary"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include4"
+        app:tabIndicatorColor="@color/colorPrimary"
         app:tabSelectedTextColor="#000"
         app:tabTextColor="#979797">
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
-
-
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_menu"
-            android:text="سهام ا میلیونی"
+
+            android:text="سهام ا میلیون "
             app:tabTextAppearance="@style/AppTheme.AppBarOverlay" />
 
         <com.google.android.material.tabs.TabItem
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:icon="@drawable/ic_menu"
             android:text="سهام ۵۰۰ هزار تومانی"

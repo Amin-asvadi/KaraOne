@@ -68,7 +68,8 @@ public class SplashScreen extends AppCompatActivity {
 
 
         } else {
-            Toast.makeText(this, "checkInternetConnection", Toast.LENGTH_SHORT).show();
+            requestToServer();
+         /*   Toast.makeText(this, "checkInternetConnection", Toast.LENGTH_SHORT).show();
             splash_internet_connect.setVisibility(View.GONE);
             spalsh_internet_is_not.setVisibility(View.VISIBLE);
             spalsh_internet_is_not.setOnClickListener(new View.OnClickListener() {
@@ -77,7 +78,7 @@ public class SplashScreen extends AppCompatActivity {
                     finish();
                     startActivity(getIntent());
                 }
-            });
+            });*/
         }
 
 
@@ -179,7 +180,7 @@ public class SplashScreen extends AppCompatActivity {
                             dbSQL.Update_One(new SahamListModel(
                                     saham_Live.get(j).getGroup(), saham_Live.get(j).getTitle()
                                     , String.valueOf(multyCount), saham_Live.get(j).getLivePrice()
-                                    , String.valueOf(multystock), String.valueOf(multySum)), Integer.valueOf(j+1));
+                                    , String.valueOf(multystock), String.valueOf(multySum)), Integer.valueOf(j + 1));
                         }
                         for (int i = 0; i < saham_Live.size(); i++) {
                             sahamListModel.setSum_price(String.valueOf(sum));
@@ -188,7 +189,7 @@ public class SplashScreen extends AppCompatActivity {
                             dbSQL.Update(new SahamListModel(
                                     saham_Live.get(i).getGroup(), saham_Live.get(i).getTitle()
                                     , saham_Live.get(i).getCount(), saham_Live.get(i).getLivePrice()
-                                    , String.valueOf(stockValue), String.valueOf(sum)),Integer.valueOf(i+1) );
+                                    , String.valueOf(stockValue), String.valueOf(sum)), Integer.valueOf(i + 1));
                         }
 
 
@@ -197,15 +198,59 @@ public class SplashScreen extends AppCompatActivity {
 
 
                 } else {
-                    Log.e("ERROR", String.valueOf(response.code()));
-                    Toast.makeText(SplashScreen.this, String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+
+                    if (!prefManager.isFirstTimeLaunch()) {
+
+                        goToActivity();
+                    }if (prefManager.isFirstTimeLaunch()){
+                        Toast.makeText(SplashScreen.this, "checkInternetConnection", Toast.LENGTH_SHORT).show();
+                        splash_internet_connect.setVisibility(View.GONE);
+                        spalsh_internet_is_not.setVisibility(View.VISIBLE);
+                        spalsh_internet_is_not.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                finish();
+                                startActivity(getIntent());
+                            }
+                        });
+
+
+                    }
+                    else {
+
+                        Toast.makeText(SplashScreen.this, "in falure", Toast.LENGTH_SHORT).show();
+                        Log.e("ERROR", String.valueOf(response.code()));
+                        Toast.makeText(SplashScreen.this, String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
+                    }
 
                 }
             }
 
             @Override
             public void onFailure(Call<List<SahamListModel>> call, Throwable t) {
-                Toast.makeText(SplashScreen.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                if (!prefManager.isFirstTimeLaunch()) {
+
+                    goToActivity();
+                }
+                if (prefManager.isFirstTimeLaunch()){
+                    Toast.makeText(SplashScreen.this, "checkInternetConnection", Toast.LENGTH_SHORT).show();
+                    splash_internet_connect.setVisibility(View.GONE);
+                    spalsh_internet_is_not.setVisibility(View.VISIBLE);
+                    spalsh_internet_is_not.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            finish();
+                            startActivity(getIntent());
+                        }
+                    });
+
+
+                }
+                else {
+
+                    Toast.makeText(SplashScreen.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+
+                }
 
             }
         });

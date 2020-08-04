@@ -16,6 +16,7 @@ import com.example.karayek.ui.databse.DbSql;
 import com.example.karayek.ui.sahamListTabs.fiveHundredStock.FiveHunderedStockAdapter;
 import com.example.karayek.ui.sahmList.SahamListModel;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -90,7 +91,9 @@ View root = inflater.inflate(R.layout.fragment_one_melioon_stock, container, fal
                 (getContext(),LinearLayoutManager.VERTICAL,false);
         rc_stock_value.setLayoutManager(linearLayoutManager);
         rc_stock_value.setAdapter(oneMElioonAdapter);
-        txt_sum.setText(sahamListItems.get(1).getSum_price());
+        DecimalFormat decimalFormat = new DecimalFormat("#,###.###");
+        String sumprice = decimalFormat.format(Integer.valueOf(sahamListItems.get(1).getSum_price()));
+        txt_sum.setText(sumprice);
         return root;
 
     }

@@ -7,16 +7,24 @@
     android:layout_height="match_parent"
     tools:context=".ui.inquirySahamActivity.InquirySahamActvity">
 
-    <com.github.ybq.android.spinkit.SpinKitView
-       android:id="@+id/inquiry_imageView"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        app:SpinKit_Color="#d45100"
-        style="@style/SpinKitView.CubeGrid"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <include
+        android:id="@+id/include6"
+        layout="@layout/layout_toolbar_inquiry"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <com.github.ybq.android.spinkit.SpinKitView
+        android:id="@+id/inquiry_imageView"
+        style="@style/SpinKitView.CubeGrid"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:SpinKit_Color="#d45100"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include6"
+        app:layout_constraintVertical_bias="0.45" />
 
     <TextView
         android:id="@+id/txt_inprogress"
