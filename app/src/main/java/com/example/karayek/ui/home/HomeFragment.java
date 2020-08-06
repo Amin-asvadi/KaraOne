@@ -81,6 +81,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 			Dialog dialogDenide = new Dialog(getContext());
 			dialogDenide.setContentView(R.layout.agreement_layout);
 			btn_ok = dialogDenide.findViewById(R.id.btn_positive_agree);
+			dialogDenide.setCancelable(false);
 			btn_ok.setOnClickListener(new View.OnClickListener() {
 				@Override
 				public void onClick(View v) {

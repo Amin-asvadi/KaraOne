@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "219105356374",
+    "firebase_url": "https://karasaham-662ec.firebaseio.com",
+    "project_id": "karasaham-662ec",
+    "storage_bucket": "karasaham-662ec.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:219105356374:android:469616271ad0b9fe3aa9f7",
+        "android_client_info": {
+          "package_name": "com.example.karayek1975"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "219105356374-vlnsqvnvo33ikou1lnld9ra6jvqns6um.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpTWt2dT_3xsvzZK9DvfdKlYF9U5QaUUI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "219105356374-vlnsqvnvo33ikou1lnld9ra6jvqns6um.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
