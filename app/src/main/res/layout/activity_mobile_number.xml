@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:background="@drawable/beck_ed_text"
         android:hint="09123456789"
-        android:inputType="phone"
+        android:inputType="number"
         android:layoutDirection="rtl"
         android:maxLength="11"
         android:padding="10dp"

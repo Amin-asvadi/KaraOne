@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|right"
         android:layout_marginRight="10dp"
-        android:src="@drawable/ic_baseline_menu_24"
+        android:src="@drawable/ic_baseline_info_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.98"

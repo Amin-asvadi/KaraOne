@@ -1,10 +1,17 @@
 package com.example.karayek.ui.home;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.DeadSystemException;
 import android.os.Handler;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,6 +26,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.karayek.MainActivity;
 import com.example.karayek.R;
+import com.example.karayek.ui.ClsSharedPreference;
 import com.example.karayek.ui.change_shaba_number.Change_shaba_number;
 import com.example.karayek.ui.databse.DbSql;
 import com.example.karayek.ui.ejectSaham.EjectSahamActivity;
@@ -29,6 +37,7 @@ import com.example.karayek.ui.sahamListTabs.SahamListTabsActivity;
 import com.example.karayek.ui.sahmList.SahamListActivity;
 import com.example.karayek.ui.sahmList.SahamListModel;
 import com.example.karayek.ui.sell_activity.SellActivity;
+import com.example.karayek.ui.sell_khobre_webView.Sell_whith_Khobre;
 import com.example.karayek.ui.splashScreen.SplashScreen;
 import com.robinhood.ticker.TickerView;
 
@@ -48,9 +57,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 	SahamListModel sahamListModel;
 	private List<SahamListModel> sahamListItems = new ArrayList<>();
 	private DbSql dbSQL ;
+	ClsSharedPreference prefManager_main;
 	View root;
 	TickerView tv_saham_price;
 	TickerView tv_saham_arzesh;
+	TextView nagetive, btn_ok;
+	Context context;
+
 
 	private HomeViewModel homeViewModel;
 
@@ -59,7 +72,38 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 		homeViewModel =
 				ViewModelProviders.of(this).get(HomeViewModel.class);
 		root = inflater.inflate(R.layout.fragment_home_final, container, false);
+		prefManager_main = new ClsSharedPreference(getContext());
+
+		if (prefManager_main.isFirstTimeLaunchMain()){
+
+
+
+			Dialog dialogDenide = new Dialog(getContext());
+			dialogDenide.setContentView(R.layout.agreement_layout);
+			btn_ok = dialogDenide.findViewById(R.id.btn_positive_agree);
+			btn_ok.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					prefManager_main.setFirstTimeLaunchMain(false);
+					dialogDenide.dismiss();
+				}
+			});
+			nagetive = dialogDenide.findViewById(R.id.btn_nagetive_agree);
+			nagetive.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					prefManager_main.setFirstTimeLaunchMain(true);
+					System.exit(0);
+				}
+			});
+
+			dialogDenide.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+			dialogDenide.show();
+		}
 	dbSQL = new DbSql(getActivity());
+
+
+
 	//	sahamListModel = new SahamListModel();
 		tv_saham_price = root.findViewById(R.id.tv_saham_price);
 		tv_saham_arzesh = root.findViewById(R.id.tv_saham_arzesh);
@@ -146,4 +190,5 @@ sahamListItems = dbSQL.ShowData();
 		}
 
 	}
+
 }

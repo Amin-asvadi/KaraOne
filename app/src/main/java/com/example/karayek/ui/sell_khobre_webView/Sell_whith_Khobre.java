@@ -74,13 +74,13 @@ public class Sell_whith_Khobre extends AppCompatActivity {
         String phone_num = phone_number.getText().toString();
         String personID = person_id.getText().toString();
         if (name.getText().toString().trim().equals("") || name.getText().toString().trim().length() < 5) {
-            name.setError("لطفا مقادیر را پر کنید");
+            name.setError("نام وارد شده کوتاه میباشد");
         } else if (phone_number.getText().toString().trim().equals("") || phone_number.getText().toString().trim().length() < 11 || !phone_num.matches("(\\+98|0)?9\\d{9}")) {
-            phone_number.setError("لطفا مقادیر را صحیح وارد کنید ");
+            phone_number.setError("شماره موبایل اشتباه است ");
         } else if (person_id.getText().toString().trim().equals("") || person_id.getText().toString().trim().length() < 10) {
 
 
-            person_id.setError("ا   سیشسیشسیشسیت");
+            person_id.setError("شماه ملی اشتباه است");
         } else {
 
             char[] chars = personID.toCharArray();
@@ -100,7 +100,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
 
             }
             else{
-                person_id.setError("اشتباه است");
+                person_id.setError("شماره ملی صحیح وارد نمایید");
             }
 
             dialog.setContentView(R.layout.layout_alert_positive_or_nagetive);

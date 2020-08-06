@@ -117,17 +117,29 @@ public class ClsSharedPreference {
     private static final String REY_CHAT_URL = "raychat_link";
     private static final String BASCKET_LIST_EXPIRE = "bascket_list_expire";
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
+    private static final String IS_FIRST_TIME_LAUNCH_MAIN = "IsFirstTimeLaunch_main";
 
 
     private SharedPreferences pref;
     private SharedPreferences prefsetting;
+    public boolean isFirstTimeLaunchMain() {
+        return pref.getBoolean(IS_FIRST_TIME_LAUNCH_MAIN, true);
+    }
+
+    public void setFirstTimeLaunchMain(boolean isFirstTime) {
+        editor.putBoolean(IS_FIRST_TIME_LAUNCH_MAIN, isFirstTime);
+        editor.commit();
+    }
+
     public boolean isFirstTimeLaunch() {
         return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
     }
+
     public void setFirstTimeLaunch(boolean isFirstTime) {
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
         editor.commit();
     }
+
     public ClsSharedPreference(Context context) {
         pref = context.getSharedPreferences(PREFNAMELGIN, 0);
         prefsetting = context.getSharedPreferences(PRESETTING, 0);
@@ -182,7 +194,7 @@ public class ClsSharedPreference {
     }
 
     public boolean get_list_course_doing() {
-        return pref.getBoolean(ITEM_LIST_COURSE_DOING, false);
+        return pref.getBoolean(ITEM_LIST_COURSE_DOING, true);
     }
 
     public void set_list_course_all(boolean course_doing) {
@@ -247,6 +259,7 @@ public class ClsSharedPreference {
         editor.putBoolean(FRG_FORUM_FIRST, o1_0);
         editor.commit();
     }
+
     public boolean getFrgFasl() {
         return pref.getBoolean(FRG_SEARCH_FASL, false);
     }
@@ -255,6 +268,7 @@ public class ClsSharedPreference {
         editor.putBoolean(FRG_SEARCH_FASL, o1_0);
         editor.commit();
     }
+
     public boolean getFrgTrain() {
         return pref.getBoolean(FRG_SEARCH_TRAIN, false);
     }
@@ -263,6 +277,7 @@ public class ClsSharedPreference {
         editor.putBoolean(FRG_SEARCH_TRAIN, o1_0);
         editor.commit();
     }
+
     public boolean getFrgproduct() {
         return pref.getBoolean(FRG_SEARCH_PRODUCT, false);
     }
@@ -271,6 +286,7 @@ public class ClsSharedPreference {
         editor.putBoolean(FRG_SEARCH_PRODUCT, o1_0);
         editor.commit();
     }
+
     public boolean getFrgfile() {
         return pref.getBoolean(FRG_SEARCH_FILE, false);
     }
@@ -326,6 +342,7 @@ public class ClsSharedPreference {
 
         editorsetting.commit();
     }
+
     public int getgender() {
         return prefsetting.getInt(GENDER, 0);
     }
@@ -395,6 +412,7 @@ public class ClsSharedPreference {
         editor.putBoolean(FRG_PROFILE, status);
         editor.commit();
     }
+
     public boolean frg_mypeyment() {
         return pref.getBoolean(FRG_MYPAYMENT, false);
     }
@@ -587,6 +605,7 @@ public class ClsSharedPreference {
         editor.putString(KEY_WALLET, wallet);
         editor.commit();
     }
+
     public String getwalletmin() {
         return pref.getString(KEY_WALLETMIN, "0");
     }
@@ -595,7 +614,6 @@ public class ClsSharedPreference {
         editor.putString(KEY_WALLETMIN, walletmin);
         editor.commit();
     }
-
 
 
     public String getreagent_text() {
@@ -724,7 +742,7 @@ public class ClsSharedPreference {
     }
 
     public String getConfig() {
-        return pref.getString(CONFIG, null) ;
+        return pref.getString(CONFIG, null);
     }
 
 
