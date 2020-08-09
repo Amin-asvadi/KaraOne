@@ -4,16 +4,23 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.khobre.karayek.R;
+import com.zarinpal.ewallets.purchase.OnCallbackRequestPaymentListener;
+import com.zarinpal.ewallets.purchase.OnCallbackVerificationPaymentListener;
+import com.zarinpal.ewallets.purchase.PaymentRequest;
+import com.zarinpal.ewallets.purchase.ZarinPal;
 
 public class Sell_whith_Khobre extends AppCompatActivity {
     EditText name;
@@ -24,6 +31,11 @@ public class Sell_whith_Khobre extends AppCompatActivity {
     TextView positve, nagetive, btn_ok;
     ImageView back;
 
+    String nameStr;
+    String phoneStr;
+    String personIdStr;
+    Uri  data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +44,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         init();
+
       /*  Uri data = getIntent().getData();
         ZarinPal.getPurchase(this).verificationPayment(data, new OnCallbackVerificationPaymentListener() {
             @Override
@@ -45,15 +58,86 @@ public class Sell_whith_Khobre extends AppCompatActivity {
             }
         });
 */
+        data =getIntent().getData();
+
+        if (data!=null) {
+            ZarinPal.getPurchase(this).verificationPayment(data, new OnCallbackVerificationPaymentListener() {
+                @Override
+                public void onCallbackResultVerificationPayment(boolean isPaymentSuccess, String refID, PaymentRequest paymentRequest) {
+                    if (isPaymentSuccess) {
+                        SendData(nameStr,phoneStr,personIdStr);
+                        Toast.makeText(Sell_whith_Khobre.this,  phoneStr +refID, Toast.LENGTH_SHORT).show();
+                        //tv.setText( "موفق " + refID);
+                        //   Log.i("TAG", refID);
+                        Toast.makeText(Sell_whith_Khobre.this, "موفق", Toast.LENGTH_LONG).show();
+                        Dialog dialogOk = new Dialog(Sell_whith_Khobre.this);
+                    dialogOk.setContentView(R.layout.layout_accepted_dialog);
+                    btn_ok = dialogOk.findViewById(R.id.btn_positive_accept);
+                    btn_ok.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialogOk.dismiss();
+                      /*      name.setText("");
+                            phone_number.setText("");
+                            person_id.setText("");*/
+                            //dialog.dismiss();
+
+                        }
+                    });
+                    dialogOk.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialogOk.show();
+
+
+                    } else {
+                        Toast.makeText(Sell_whith_Khobre.this,  "ناموفق" , Toast.LENGTH_SHORT).show();
+                        //  Log.i("TAG", refID);
+                        // MainActivity.this.getIntent().setData(null);
+                    }
+                }
+
+
+            });
+        }else {
+            //tv.setText("recieved data is ");
+            Toast.makeText(this, "recieved data is null", Toast.LENGTH_SHORT).show();
+        }
 
         btn_byt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mypayment();
 
+               // payment(30000L);
+
             }
         });
 
+
+    }
+
+    private void payment(Long amount){
+        try {
+            ZarinPal purchase=ZarinPal.getPurchase(Sell_whith_Khobre.this);
+            PaymentRequest paymentRequest=ZarinPal.getPaymentRequest();
+            paymentRequest.setMerchantID("f9808e34-5540-11ea-a2a5-000c295eb8fc");
+            paymentRequest.setAmount(amount);
+            paymentRequest.setCallbackURL("retuern://zarinpalpayment");
+            paymentRequest.setDescription("پرداخت تست");
+            purchase.startPayment(paymentRequest, new OnCallbackRequestPaymentListener() {
+                @Override
+                public void onCallbackResultPaymentRequest(int status, String authority, Uri paymentGatewayUri, Intent intent) {
+                    if (status==100){
+
+                        startActivity(intent);
+                        // Log.i("TAG","succes");
+                    }else {
+                        Toast.makeText(Sell_whith_Khobre.this, "خطا در ایجاد درخواست", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }catch (Exception e){
+            e.printStackTrace();
+        }
 
     }
 
@@ -70,6 +154,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
             person_id.setError("شماه ملی اشتباه است");
         } else {
 
+
             char[] chars = personID.toCharArray();
             int sum = 0;
             for (int i = 8; i >= 0; i--) {
@@ -84,7 +169,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
             }
 
             if (Re == Integer.parseInt(String.valueOf(chars[9]))){
-
+                personIdStr = person_id.getText().toString().trim();
             }
             else{
                 person_id.setError("شماره ملی صحیح وارد نمایید");
@@ -99,7 +184,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                     /////// send to payment method///////////
 
 
-                    Dialog dialogOk = new Dialog(Sell_whith_Khobre.this);
+                    /*Dialog dialogOk = new Dialog(Sell_whith_Khobre.this);
                     dialogOk.setContentView(R.layout.layout_accepted_dialog);
                     btn_ok = dialogOk.findViewById(R.id.btn_positive_accept);
                     btn_ok.setOnClickListener(new View.OnClickListener() {
@@ -114,35 +199,23 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                         }
                     });
                     dialogOk.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialogOk.show();
+                    dialogOk.show();*/
                     ;
+                    nameStr = name.getText().toString().trim();
+                    phoneStr = phone_number.getText().toString().trim();
+                    Toast.makeText(Sell_whith_Khobre.this, nameStr, Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    payment(10000L);
 
-              /*      PaymentRequest payment = ZarinPal.getPaymentRequest();
-                    payment.setMerchantID("f9808e34-5540-11ea-a2a5-000c295eb8fc");
-                    payment.setAmount(1000);
-                    payment.setDescription("فروش سهام عدالت توسط کارشناس");
-                    payment.setCallbackURL("doniyakhobre://kara1975");
 
-                    ZarinPal.getPurchase(getApplicationContext()).startPayment(payment, new OnCallbackRequestPaymentListener() {
-                        @Override
-                        public void onCallbackResultPaymentRequest(int status, String authority, Uri paymentGatewayUri, Intent intent) {
-                            if (status == 100) {
-                                Toast.makeText(Sell_whith_Khobre.this, "intent", Toast.LENGTH_SHORT).show();
 
-                                startActivity(intent);
-                            } else {
-                                Toast.makeText(Sell_whith_Khobre.this, "خطا در ایجاد درخواست پرداخت", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                    dialog.dismiss();*/
                 }
 
             });
             nagetive.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Dialog dialogDenide = new Dialog(Sell_whith_Khobre.this);
+               /*     Dialog dialogDenide = new Dialog(Sell_whith_Khobre.this);
                     dialogDenide.setContentView(R.layout.layout_denid_dialog);
                     btn_ok = dialogDenide.findViewById(R.id.btn_positive_denide);
                     btn_ok.setOnClickListener(new View.OnClickListener() {
@@ -152,7 +225,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                         }
                     });
                     dialogDenide.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialogDenide.show();
+                    dialogDenide.show();*/
                     dialog.dismiss();
                 }
             });
@@ -163,7 +236,13 @@ public class Sell_whith_Khobre extends AppCompatActivity {
 
         }
     }
+    private void SendData(String nameStr,String phoneStr,String personIdStr) {
 
+
+
+
+
+    }
     private void init() {
         name = findViewById(R.id.ed_input_name);
         phone_number = findViewById(R.id.ed_phone_number);

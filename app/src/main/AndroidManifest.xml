@@ -25,14 +25,10 @@
             android:name=".ui.sell_khobre_webView.Sell_whith_Khobre"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="kara1975"
-                    android:scheme="doniyakhobre" />
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="retuern" android:host="zarinpalpayment"/>
             </intent-filter>
         </activity>
         <activity

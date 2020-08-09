@@ -58,7 +58,7 @@ img_back.setOnClickListener(new View.OnClickListener() {
 		btn_sell_noya_khobre.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				Intent intent = new Intent(SellActivity.this, SellKhobrePaymentWebActivity.class);
+				Intent intent = new Intent(SellActivity.this, Sell_whith_Khobre.class);
 				startActivity(intent);
 			}
 		});
