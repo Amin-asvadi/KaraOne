@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/main_back"
-    tools:context="com.example.karayek.ui.sell_kargozari.Sell_kargozari_activity">
+    tools:context="com.khobre.karayek.ui.sell_kargozari.Sell_kargozari_activity">
 
     <com.github.ybq.android.spinkit.SpinKitView
         android:id="@+id/img_rotae_sell_kargozari"

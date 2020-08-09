@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FBFAEC"
-    tools:context="com.example.karayek.ui.sahamListTabs.fiveHundredStock.FiveHundredListStockHFragment">
+    tools:context="com.khobre.karayek.ui.sahamListTabs.fiveHundredStock.FiveHundredListStockHFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

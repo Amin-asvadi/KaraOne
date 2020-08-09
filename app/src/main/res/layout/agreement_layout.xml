@@ -16,61 +16,81 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-
-            <TextView
-                android:gravity="center"
-                android:textSize="20dp"
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:lineSpacingExtra="5dp"
-     android:text="@string/agree"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="vertical"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.26" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:id="@+id/textView7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="20dp"
+                    android:text="صلب مسئولیت:"
+                    android:textSize="20dp"
+
+                    />
+                <TextView
+
+                    android:layout_width="match_parent"
+
+                    android:justificationMode="inter_word"
+                    android:layout_height="wrap_content"
+                    android:text=" 1-  تمامی خدمات ارائه شده در نرم افزار کارا 1 برای آسان سازی فرآیند مدیریت سهام عدالت هموطنان عزیز گردآوری شده و این گروه نرم افزاری هیچ گونه مسئولیتی در مورد نحوه فروش کارگزاری انتخاب شده نداشته و تمامی مسئولیتهای فروش و واریز وجه سهام عدالت بر عهده کارگزاری میباشد."/>
+                <TextView
+                    android:justificationMode="inter_word"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_height="wrap_content"
+                    android:text="2- مشمولین گرامی توجه داشته باشند که پرداخت وجه حاصل از فروش سهام عدالت توسط کارگزاری در چند مرحله انجام می‌گردد و پیگیری تعداد سهام فروخته شده و مبالغ پرداخت شده از طریق پنل کاربری اختصاص یافته به شخص امکان پذیر است. این گروه نرم افزاری هیچگونه مسئولیتی در قبال نحوه پرداخت وجه از طریق کارگزاری نداشته و پیگیری واریز وجه از طرف کارگزاری به عهده مشمول میباشد."/>
+                <TextView
+                    android:justificationMode="inter_word"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="3- با توجه به اینکه سهام عدالت اختصاص یافته به مشمولین بین 300 هزار تا یک میلیون تومان متغیر است، میزان دارایی دقیق هر شخص با مراجعه به قسمت استعلام سهام عدالت قابل دسترسی است. "/>
+                <TextView
+                    android:justificationMode="inter_word"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5- هزینه پرداخت شده برای مشاوره مخصوص یک کد ملی می‌باشد. و مشاوران این مجموعه نیز شامل موارد ذکر شده در بند یک و دو این نامه صلب مسئولیت میباشند."
+/>
+            </LinearLayout>
+
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
+
                 android:layout_margin="10dp"
                 android:layout_marginTop="93dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView7"
+android:gravity="center"
                 app:layout_constraintVertical_bias="1.0">
 
-                <TextView
-                    android:id="@+id/btn_nagetive_agree"
-                    android:layout_marginRight="5dp"
-                    android:layout_width="0dp"
-                    android:textStyle="bold"
-                    android:text="@string/cancell"
-                    android:textColor="@color/white"
-                    android:gravity="center"
-                    android:textSize="20sp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="0.5"
-                    android:background="@drawable/back_nagetive" />
+
 
                 <TextView
                     android:id="@+id/btn_positive_agree"
-                    android:layout_marginLeft="5dp"
                     android:layout_width="0dp"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:text="@string/ok"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/back_positive" />
+                    android:background="@drawable/back_positive"
+                    android:gravity="center"
+                    android:text="موافقم"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F2F1E8"
-    tools:context="com.example.karayek.ui.sell_khobre_webView.Sell_whith_Khobre">
+    tools:context="com.khobre.karayek.ui.sell_khobre_webView.Sell_whith_Khobre">
 
     <include
         android:id="@+id/include3"
