@@ -4,6 +4,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -17,10 +18,24 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.khobre.karayek.R;
+import com.khobre.karayek.ui.Network.ApiClient;
+import com.khobre.karayek.ui.Network.RetrofitApiInterface;
+import com.khobre.karayek.ui.databse.DbSql;
+import com.khobre.karayek.ui.model.PaymentModel;
+import com.khobre.karayek.ui.model.Users;
+import com.khobre.karayek.ui.sahmList.SahamListModel;
 import com.zarinpal.ewallets.purchase.OnCallbackRequestPaymentListener;
 import com.zarinpal.ewallets.purchase.OnCallbackVerificationPaymentListener;
 import com.zarinpal.ewallets.purchase.PaymentRequest;
 import com.zarinpal.ewallets.purchase.ZarinPal;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class Sell_whith_Khobre extends AppCompatActivity {
     EditText name;
@@ -31,18 +46,27 @@ public class Sell_whith_Khobre extends AppCompatActivity {
     TextView positve, nagetive, btn_ok;
     ImageView back;
 
-    String nameStr;
-    String phoneStr;
-    String personIdStr;
+   private static String nameStr;
+    private static String phoneStr;
+   private static String personIdStr;
     Uri  data;
+    Context context = this;
+    private DbSql dbSQL = new DbSql(context);
+    private List<PaymentModel> paymentModelsItems = new ArrayList<>();
+    String uri = "http://45.149.77.68/saham_edalat/";
+    RetrofitApiInterface request;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_number);
 
+        request = ApiClient.getApiClient(uri).create(RetrofitApiInterface.class);
+
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+
         init();
 
       /*  Uri data = getIntent().getData();
@@ -65,8 +89,8 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                 @Override
                 public void onCallbackResultVerificationPayment(boolean isPaymentSuccess, String refID, PaymentRequest paymentRequest) {
                     if (isPaymentSuccess) {
-                        SendData(nameStr,phoneStr,personIdStr);
-                        Toast.makeText(Sell_whith_Khobre.this,  phoneStr +refID, Toast.LENGTH_SHORT).show();
+                        insertToDatabseOnline(nameStr,phoneStr,personIdStr);
+                       /* Toast.makeText(Sell_whith_Khobre.this,  phoneStr +refID, Toast.LENGTH_SHORT).show();*/
                         //tv.setText( "موفق " + refID);
                         //   Log.i("TAG", refID);
                         Toast.makeText(Sell_whith_Khobre.this, "موفق", Toast.LENGTH_LONG).show();
@@ -89,7 +113,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
 
 
                     } else {
-                        Toast.makeText(Sell_whith_Khobre.this,  "ناموفق" , Toast.LENGTH_SHORT).show();
+                  /*      Toast.makeText(Sell_whith_Khobre.this,  "ناموفق" , Toast.LENGTH_SHORT).show();*/
                         //  Log.i("TAG", refID);
                         // MainActivity.this.getIntent().setData(null);
                     }
@@ -99,19 +123,59 @@ public class Sell_whith_Khobre extends AppCompatActivity {
             });
         }else {
             //tv.setText("recieved data is ");
-            Toast.makeText(this, "recieved data is null", Toast.LENGTH_SHORT).show();
+           /* Toast.makeText(this, "recieved data is null", Toast.LENGTH_SHORT).show();*/
         }
 
         btn_byt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mypayment();
-
+                nameStr = name.getText().toString();
+                personIdStr = person_id.getText().toString();
+                phoneStr = phone_number.getText().toString();
+                //mypayment();
+              //insertDatabase();
                // payment(30000L);
 
             }
         });
 
+
+    }
+
+    private void insertToDatabseOnline(String nameStr,String phoneStr,String personIdStr) {
+        Users users = new Users();
+        users.setName(nameStr);
+        users.setNational_number(personIdStr);
+        users.setPhone_number(phoneStr);
+
+        Call<ResponseBody> call = request.setData(users);
+
+
+
+call.enqueue(new Callback<ResponseBody>() {
+    @Override
+    public void onResponse(Call<ResponseBody> call, Response<ResponseBody> response) {
+        if (response.isSuccessful()){
+
+        }else{
+
+        }
+    }
+
+    @Override
+    public void onFailure(Call<ResponseBody> call, Throwable t) {
+        Toast.makeText(Sell_whith_Khobre.this, t.getMessage() + "", Toast.LENGTH_SHORT).show();
+    }
+});
+    }
+
+    private void insertDatabase() {
+
+        dbSQL.InsertPersonPayment(new PaymentModel(name.getText().toString(),phone_number.getText().toString(),person_id.getText().toString()));
+    }
+    private void    ShowDatabase(){
+
+        paymentModelsItems = dbSQL.ShowPersonPayment();
 
     }
 
@@ -169,7 +233,6 @@ public class Sell_whith_Khobre extends AppCompatActivity {
             }
 
             if (Re == Integer.parseInt(String.valueOf(chars[9]))){
-                personIdStr = person_id.getText().toString().trim();
             }
             else{
                 person_id.setError("شماره ملی صحیح وارد نمایید");
@@ -201,9 +264,8 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                     dialogOk.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                     dialogOk.show();*/
                     ;
-                    nameStr = name.getText().toString().trim();
-                    phoneStr = phone_number.getText().toString().trim();
-                    Toast.makeText(Sell_whith_Khobre.this, nameStr, Toast.LENGTH_SHORT).show();
+
+
                     dialog.dismiss();
                     payment(10000L);
 

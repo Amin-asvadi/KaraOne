@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.khobre.karayek.ui.model.PaymentModel;
 import com.khobre.karayek.ui.sahmList.SahamListModel;
 
 import java.util.ArrayList;
@@ -36,6 +37,12 @@ public class DbSql extends SQLiteOpenHelper {
     public static  final String LASTPRICE_ONE="LASTPRICE_ONE";
     public static  final String STOCKVALUE_ONE="STOCKVALUE_ONE";
     public static final String SUMPRICE_ONE="SUMPRICE_ONE";
+
+    public static final String PAYMENT_TABLE="PAYMENT_TABLE";
+    public static final String P_ID="P_ID";
+    public static  final String PERSON_NAME="PERSON_NAME";
+    public static  final String PERSON_PHONE="PERSON_PHONE";
+    public static final String PERSON_ID="PERSON_ID";
 
 
 
@@ -68,13 +75,19 @@ public class DbSql extends SQLiteOpenHelper {
                             + SUMPRICE_ONE + " TEXT);";
 
 
+                    String PERSON_INFO ="CREATE TABLE " + PAYMENT_TABLE + "(" + P_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                            + PERSON_NAME + " TEXT,"
+                            + PERSON_PHONE + " TEXT,"
+                            + PERSON_ID + " TEXT);";
 
                     db.execSQL(SAHAMLIST);
                     db.execSQL(SAHAMLIST_ONE);
+                    db.execSQL(PERSON_INFO);
                 }
                 public void revert(SQLiteDatabase db) {
                     db.execSQL("DROP TABLE " + TABLENAME + ";");
                     db.execSQL("DROP TABLE " + TABLENAME_ONE + ";");
+                    db.execSQL("DROP TABLE " + PAYMENT_TABLE + ";");
                 }
             }
             , new Patch() {
@@ -226,6 +239,39 @@ public class DbSql extends SQLiteOpenHelper {
         long id = database.insert(TABLENAME_ONE, null, values);
         database.close();
         return id;
+    }
+    public long InsertPersonPayment(PaymentModel data)
+    {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PERSON_NAME, data.getName());
+        values.put(PERSON_PHONE, data.getPhone());
+        values.put(PERSON_ID, data.getPersonid());
+
+        long id = database.insert(PAYMENT_TABLE, null, values);
+        database.close();
+        return id;
+    }
+
+    public ArrayList<PaymentModel> ShowPersonPayment()
+    {
+        ArrayList<PaymentModel> data = new ArrayList<>();
+        String query = "SELECT * FROM " + PAYMENT_TABLE;
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                PaymentModel modelItem = new PaymentModel();
+                modelItem.setId(Integer.parseInt(cursor.getString(0)));
+                modelItem.setName(cursor.getString(1));
+                modelItem.setPhone(cursor.getString(2));
+                modelItem.setPersonid(cursor.getString(3));
+                data.add(modelItem);
+            }
+            while (cursor.moveToNext());
+        }
+
+        return data;
     }
 
     public ArrayList<SahamListModel> ShowData()

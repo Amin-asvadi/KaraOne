@@ -85,8 +85,8 @@ img_back.setOnClickListener(new View.OnClickListener() {
 			public void run() {
 				DecimalFormat saham_price_decimal = new DecimalFormat("###,###,###");
 				int sumSahm = Integer.valueOf(sahamListItems.get(1).getSum_price());
-				String saham_price = saham_price_decimal.format((sumSahm / 100)  * 30);
-				String saham_arzesh = saham_price_decimal.format(((sumSahm  * 2) / 100 ) * 30);
+				String saham_price = saham_price_decimal.format((sumSahm / 100)  * 60);
+				String saham_arzesh = saham_price_decimal.format(((sumSahm  * 2) / 100 ) * 60);
 				//final String saham_price = Integer.toString(189398594);
 				//final String saham_arzesh = Integer.toString(378797188);
 				tv_saham_price.setText(saham_price.substring(0, Math.min(11, saham_price.length())));

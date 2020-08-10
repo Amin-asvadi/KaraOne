@@ -1,6 +1,20 @@
 package com.khobre.karayek.ui.Network;
 
 
+import com.khobre.karayek.ui.model.PaymentModel;
+import com.khobre.karayek.ui.model.Users;
+
+import java.net.ResponseCache;
+
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.Body;
+import retrofit2.http.Field;
+import retrofit2.http.FormUrlEncoded;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.http.Query;
+
 public interface RetrofitApiInterface {
 
 /*
@@ -14,4 +28,8 @@ public interface RetrofitApiInterface {
 	Observable<Response<Ser_Book_Main>> Get_Url(
             @Query("id") int id
     );*/
+
+
+    @POST("add_buyer")
+    Call<ResponseBody> setData(@Body Users info);
 }

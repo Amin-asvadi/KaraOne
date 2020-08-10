@@ -11,14 +11,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProviders;
 
 import com.khobre.karayek.R;
 import com.khobre.karayek.ui.ClsSharedPreference;
+import com.khobre.karayek.ui.components.Global;
 import com.khobre.karayek.ui.databse.DbSql;
 import com.khobre.karayek.ui.inquirySahamActivity.InquirySahamActvity;
 import com.khobre.karayek.ui.questactivity.QuestionActivity;
@@ -49,6 +52,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 	TickerView tv_saham_arzesh;
 	TextView nagetive, btn_ok;
 	Context context;
+	RelativeLayout salb_card;
 
 
 	private HomeViewModel homeViewModel;
@@ -59,7 +63,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 				ViewModelProviders.of(this).get(HomeViewModel.class);
 		root = inflater.inflate(R.layout.fragment_home_final, container, false);
 		prefManager_main = new ClsSharedPreference(getContext());
-
+		salb_card = root.findViewById(R.id.salb_pop);
 		if (prefManager_main.isFirstTimeLaunchMain()){
 
 
@@ -78,6 +82,10 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
 			dialogDenide.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 			dialogDenide.show();
+			/*ViewGroup.LayoutParams params =salb_card.getLayoutParams();
+			params.height = (int) ((Global.getSizeScreen(context)) / 2);
+			*//*params.width = (int) ((Global.getSizeScreen(context)) / 3);*//*
+		salb_card.setLayoutParams(params);*/
 		}
 	dbSQL = new DbSql(getActivity());
 

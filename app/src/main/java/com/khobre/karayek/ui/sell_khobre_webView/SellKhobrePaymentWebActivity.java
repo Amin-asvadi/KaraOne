@@ -32,7 +32,8 @@ public class SellKhobrePaymentWebActivity extends AppCompatActivity {
                 rotateImg.setVisibility(View.GONE);
                 webView.setVisibility(View.VISIBLE);
             }
-        }, 3000);  // ----Main Activity Start After 3 Sec.
+        },
+                3000);  // ----Main Activity Start After 3 Sec.
 
         webView = findViewById(R.id.sell_khobre_webview);
         webView.loadUrl("http://mashhadburse.ir/form/");
