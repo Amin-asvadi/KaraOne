@@ -1,5 +1,6 @@
 package com.khobre.karayek.ui.sell_khobre_webView;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,6 +10,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -157,6 +159,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                 nameStr = name.getText().toString();
                 personIdStr = person_id.getText().toString();
                 phoneStr = phone_number.getText().toString();
+
                 mypayment();
               //insertDatabase();
                // payment(30000L);
@@ -203,13 +206,13 @@ call.enqueue(new Callback<ResponseBody>() {
         paymentModelsItems = dbSQL.ShowPersonPayment();
 
     }
-
-    private void payment(Long amount){
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
+    private void payment(){
         try {
             ZarinPal purchase=ZarinPal.getPurchase(Sell_whith_Khobre.this);
             PaymentRequest paymentRequest=ZarinPal.getPaymentRequest();
             paymentRequest.setMerchantID("f9808e34-5540-11ea-a2a5-000c295eb8fc");
-            paymentRequest.setAmount(amount);
+            paymentRequest.setAmount(30000L);
             paymentRequest.setCallbackURL("retuern://zarinpalpayment");
             paymentRequest.setDescription("پرداخت تست");
             purchase.startPayment(paymentRequest, new OnCallbackRequestPaymentListener() {
@@ -229,7 +232,6 @@ call.enqueue(new Callback<ResponseBody>() {
         }
 
     }
-
     private void mypayment() {
         String phone_num = phone_number.getText().toString();
         String personID = person_id.getText().toString();
@@ -262,6 +264,7 @@ call.enqueue(new Callback<ResponseBody>() {
                 positve = dialog.findViewById(R.id.btn_positive);
                 nagetive = dialog.findViewById(R.id.btn_nagetive);
                 positve.setOnClickListener(new View.OnClickListener() {
+                    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
                     @Override
                     public void onClick(View v) {
                         /////// send to payment method///////////
@@ -271,7 +274,7 @@ call.enqueue(new Callback<ResponseBody>() {
 
 
                         dialog.dismiss();
-                        payment(30000L);
+                        payment();
 
 
 

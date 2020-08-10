@@ -10,7 +10,7 @@
     <string name="menu_home"></string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <string name="trust">هزینه انجام خدمات 30,000  تومان میباشد برای ادامه و ثبت درخواست رو دکمه تایید را بفشارید</string>
+    <string name="trust">هزینه انجام خدمات 30,000  تومان میباشد برای ادامه و ثبت درخواست دکمه تایید را بفشارید</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="cancell">لغو</string>
