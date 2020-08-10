@@ -36,6 +36,17 @@
         app:layout_constraintStart_toStartOf="@+id/img_rotae"
         app:layout_constraintTop_toBottomOf="@+id/img_rotae"
         app:layout_constraintVertical_bias="0.02999999" />
+    <TextView
+        android:id="@+id/vpn_queastion_txt_disable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VPN خود را غیر فعال کنید"
+        android:textDirection="rtl"
+        android:textColor="#000"
+        app:layout_constraintEnd_toEndOf="@+id/txt_inprogress"
+        app:layout_constraintStart_toStartOf="@+id/txt_inprogress"
+        app:layout_constraintTop_toBottomOf="@+id/txt_inprogress" />
+
 
     <WebView
         android:id="@+id/qestion_webView"

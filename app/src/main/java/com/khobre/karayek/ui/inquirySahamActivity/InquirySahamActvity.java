@@ -20,7 +20,7 @@ public class InquirySahamActvity extends AppCompatActivity {
 	Animation rotateAnimation;
 	SpinKitView rotateImg;
 	ImageView btn_back;
-	TextView txt_inprogress;
+	TextView txt_inprogress,disable_txt;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -29,6 +29,7 @@ public class InquirySahamActvity extends AppCompatActivity {
 		actionBar.hide();
 		rotateImg = findViewById(R.id.inquiry_imageView);
 		txt_inprogress = findViewById(R.id.txt_inprogress);
+		disable_txt = findViewById(R.id.vpn_inuery_txt_disable);
 
 		btn_back = findViewById(R.id.img_back_inqery);
 		//rotateAnimation = AnimationUtils.loadAnimation(this,R.anim.rotate);
@@ -42,6 +43,7 @@ public class InquirySahamActvity extends AppCompatActivity {
 				rotateImg.setVisibility(View.GONE);
 				txt_inprogress.setVisibility(View.GONE);
 				inquiry_saham_vewbview.setVisibility(View.VISIBLE);
+				disable_txt.setVisibility(View.GONE);
 			}
 		}, 7000); // ----Main Activity Start After 3 Sec.
 

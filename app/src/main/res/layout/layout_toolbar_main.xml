@@ -7,7 +7,7 @@
 
 
     <ImageView
-        android:id="@+id/img_drawer"
+        android:id="@+id/img_pop_info"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical|right"

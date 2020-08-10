@@ -28,7 +28,7 @@ android:gravity="center"
                 app:layout_constraintHorizontal_bias="0.498"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.17000002" />
+                app:layout_constraintVertical_bias="0.07999998" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -36,42 +36,67 @@ android:gravity="center"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:lineSpacingExtra="5dp"
-                android:padding="20dp"
-                android:text="عملیات پرداخت با موفقیت انجام شد درخواست شما در لیست بررسی قرار گرفت مشاوران ما تا ۲۴ ساعت آینده با شما تماس خواهند گرفت"
+                android:padding="10dp"
+                android:text="عملیات پرداخت با موفقیت انجام شد"
                 android:textSize="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintHorizontal_bias="0.51"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/imageView5"
-                app:layout_constraintVertical_bias="0.26" />
+                app:layout_constraintVertical_bias="0.13999999" />
+
+            <TextView
+                android:id="@+id/textView11"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:lineSpacingExtra="12dp"
+                android:textSize="17sp"
+                android:layout_height="wrap_content"
+                android:text="مشاوران فروش سهام عدالت ما در 48 ساعت کاری آینده با شما تماس خواهند گرفت."
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <TextView
+                android:id="@+id/textView10"
+                android:lineSpacingExtra="12dp"
+                android:textSize="17sp"
+                android:gravity="center"
+                android:paddingLeft="5sp"
+                android:paddingRight="5sp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="جهت تسریع فرآیند فروش لطفاْ پاسخگوی تلفن همراه خود باشید"
+                app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+                app:layout_constraintTop_toBottomOf="@+id/textView11"
+                app:layout_constraintVertical_bias="0.0" />
+
 
             <LinearLayout
                 android:id="@+id/linearLayout4"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:layout_margin="10dp"
                 android:layout_marginTop="93dp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/textView7"
+                app:layout_constraintStart_toStartOf="@+id/textView7"
                 app:layout_constraintTop_toBottomOf="@+id/textView7"
-                app:layout_constraintVertical_bias="1.0">
+                app:layout_constraintVertical_bias="0.84000003">
 
 
                 <TextView
                     android:id="@+id/btn_positive_accept"
-                    android:layout_marginLeft="5dp"
                     android:layout_width="0dp"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:text="@string/ok"
                     android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
                     android:layout_weight="0.5"
-                    android:background="@drawable/back_positive" />
+                    android:background="@drawable/back_positive"
+                    android:gravity="center"
+                    android:text="@string/ok"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

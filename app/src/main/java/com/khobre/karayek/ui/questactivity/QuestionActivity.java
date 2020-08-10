@@ -9,7 +9,9 @@ import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
+import com.google.android.gms.common.api.internal.GoogleApiManager;
 import com.khobre.karayek.R;
 import com.github.ybq.android.spinkit.SpinKitView;
 
@@ -17,6 +19,7 @@ public class QuestionActivity extends AppCompatActivity {
 	WebView qestion_webView;
 ImageView img_back;
 	SpinKitView rotateImg;
+			TextView inprogress,disable;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,8 @@ ImageView img_back;
 		ActionBar actionBar = getSupportActionBar();
 		actionBar.hide();
 		img_back = findViewById(R.id.img_back_quest);
+		inprogress = findViewById(R.id.txt_inprogress);
+		disable = findViewById(R.id.vpn_queastion_txt_disable);
 	/*	img_back.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -41,6 +46,8 @@ ImageView img_back;
 
 				rotateImg.setVisibility(View.GONE);
 				qestion_webView.setVisibility(View.VISIBLE);
+				inprogress.setVisibility(View.GONE);
+				disable.setVisibility(View.GONE);
 			}
 		}, 7000); // ----Main Activity Start After 3 Sec.
 

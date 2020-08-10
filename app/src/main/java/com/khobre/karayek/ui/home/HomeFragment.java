@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -53,6 +54,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 	TextView nagetive, btn_ok;
 	Context context;
 	RelativeLayout salb_card;
+	ImageView btn_pop_info;
 
 
 	private HomeViewModel homeViewModel;
@@ -64,6 +66,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 		root = inflater.inflate(R.layout.fragment_home_final, container, false);
 		prefManager_main = new ClsSharedPreference(getContext());
 		salb_card = root.findViewById(R.id.salb_pop);
+		btn_pop_info = root.findViewById(R.id.img_pop_info);
+		btn_pop_info.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Dialog dialogInfo = new Dialog(getContext());
+				dialogInfo.setContentView(R.layout.layout_pop_info);
+				dialogInfo.setCancelable(true);
+				dialogInfo.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+				dialogInfo.show();
+			}
+		});
 		if (prefManager_main.isFirstTimeLaunchMain()){
 
 

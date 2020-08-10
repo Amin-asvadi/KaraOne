@@ -34,6 +34,20 @@
         app:layout_constraintTop_toBottomOf="@+id/sell_kargozar_webView"
         app:layout_constraintVertical_bias="0.07999998" />
 
+    <TextView
+        android:id="@+id/vpn_kargozari_txt_disable"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VPN خود را غیر فعال کنید"
+        android:textColor="#000"
+        android:textDirection="rtl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/txt_inprogress_kargozari"
+        app:layout_constraintStart_toStartOf="@+id/txt_inprogress_kargozari"
+        app:layout_constraintTop_toBottomOf="@+id/txt_inprogress_kargozari"
+        app:layout_constraintVertical_bias="0.0" />
+
+
     <WebView
         android:id="@+id/sell_kargozar_webView"
         android:layout_width="0dp"

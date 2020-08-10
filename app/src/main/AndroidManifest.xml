@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.sell_khobre_webView.SellKhobrePaymentWebActivity"></activity>
+        <activity android:name=".ui.abouteUs.About"></activity>
+        <activity android:name=".ui.sell_khobre_webView.SellKhobrePaymentWebActivity" />
         <activity
             android:name=".ui.sahamListTabs.SahamListTabsActivity"
             android:screenOrientation="portrait" />
@@ -25,10 +26,14 @@
             android:name=".ui.sell_khobre_webView.Sell_whith_Khobre"
             android:screenOrientation="portrait">
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
-                <data android:scheme="retuern" android:host="zarinpalpayment"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data
+                    android:host="zarinpalpayment"
+                    android:scheme="retuern" />
             </intent-filter>
         </activity>
         <activity
@@ -45,7 +50,7 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.moblieNumber.MobileNumberActivity"
-            android:screenOrientation="portrait"></activity>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ui.sell_activity.SellActivity"
             android:screenOrientation="portrait" />

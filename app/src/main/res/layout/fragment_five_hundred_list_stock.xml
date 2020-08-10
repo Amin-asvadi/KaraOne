@@ -113,18 +113,25 @@
             android:layout_height="wrap_content"
             android:background="@drawable/back_sum"
             android:orientation="horizontal"
-            android:weightSum="5"
+            android:weightSum="7"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="5:1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/rc_stock_valuefive_hundred"
             app:layout_constraintVertical_bias="0.22000003">
-
+<TextView
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1.5"
+    android:gravity="center|right"
+    android:textStyle="bold"
+    android:textColor="#E60000"
+    android:text="ریال"/>
             <TextView
                 android:id="@+id/sum_pricefive_hundered"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="3"
+                android:layout_weight="3.5"
                 android:gravity="center"
 
                 android:padding="10dp"

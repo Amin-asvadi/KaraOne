@@ -90,10 +90,6 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                 public void onCallbackResultVerificationPayment(boolean isPaymentSuccess, String refID, PaymentRequest paymentRequest) {
                     if (isPaymentSuccess) {
                         insertToDatabseOnline(nameStr,phoneStr,personIdStr);
-                       /* Toast.makeText(Sell_whith_Khobre.this,  phoneStr +refID, Toast.LENGTH_SHORT).show();*/
-                        //tv.setText( "موفق " + refID);
-                        //   Log.i("TAG", refID);
-                        Toast.makeText(Sell_whith_Khobre.this, "موفق", Toast.LENGTH_LONG).show();
                         Dialog dialogOk = new Dialog(Sell_whith_Khobre.this);
                     dialogOk.setContentView(R.layout.layout_accepted_dialog);
                     btn_ok = dialogOk.findViewById(R.id.btn_positive_accept);
@@ -101,6 +97,24 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             dialogOk.dismiss();
+
+                        }
+                    });
+                    dialogOk.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                    dialogOk.show();
+                        ;
+
+                       /* Toast.makeText(Sell_whith_Khobre.this,  phoneStr +refID, Toast.LENGTH_SHORT).show();*/
+                        //tv.setText( "موفق " + refID);
+                        //   Log.i("TAG", refID);
+                        Toast.makeText(Sell_whith_Khobre.this, "موفق", Toast.LENGTH_LONG).show();
+                        Dialog dialogacc = new Dialog(Sell_whith_Khobre.this);
+                        dialogacc.setContentView(R.layout.layout_accepted_dialog);
+                    btn_ok = dialogacc.findViewById(R.id.btn_positive_accept);
+                    btn_ok.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            dialogacc.dismiss();
                       /*      name.setText("");
                             phone_number.setText("");
                             person_id.setText("");*/
@@ -113,6 +127,17 @@ public class Sell_whith_Khobre extends AppCompatActivity {
 
 
                     } else {
+                        Dialog dialogDenide = new Dialog(Sell_whith_Khobre.this);
+                        dialogDenide.setContentView(R.layout.layout_denid_dialog);
+                        btn_ok = dialogDenide.findViewById(R.id.btn_positive_denide);
+                        btn_ok.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                dialogDenide.dismiss();
+                            }
+                        });
+                        dialogDenide.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                        dialogDenide.show();
                   /*      Toast.makeText(Sell_whith_Khobre.this,  "ناموفق" , Toast.LENGTH_SHORT).show();*/
                         //  Log.i("TAG", refID);
                         // MainActivity.this.getIntent().setData(null);
@@ -132,7 +157,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                 nameStr = name.getText().toString();
                 personIdStr = person_id.getText().toString();
                 phoneStr = phone_number.getText().toString();
-                //mypayment();
+                mypayment();
               //insertDatabase();
                // payment(30000L);
 
@@ -233,67 +258,41 @@ call.enqueue(new Callback<ResponseBody>() {
             }
 
             if (Re == Integer.parseInt(String.valueOf(chars[9]))){
+                dialog.setContentView(R.layout.layout_alert_positive_or_nagetive);
+                positve = dialog.findViewById(R.id.btn_positive);
+                nagetive = dialog.findViewById(R.id.btn_nagetive);
+                positve.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        /////// send to payment method///////////
+
+
+
+
+
+                        dialog.dismiss();
+                        payment(30000L);
+
+
+
+                    }
+
+                });
+                nagetive.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+
             }
             else{
                 person_id.setError("شماره ملی صحیح وارد نمایید");
             }
 
-            dialog.setContentView(R.layout.layout_alert_positive_or_nagetive);
-            positve = dialog.findViewById(R.id.btn_positive);
-            nagetive = dialog.findViewById(R.id.btn_nagetive);
-            positve.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    /////// send to payment method///////////
-
-
-                    /*Dialog dialogOk = new Dialog(Sell_whith_Khobre.this);
-                    dialogOk.setContentView(R.layout.layout_accepted_dialog);
-                    btn_ok = dialogOk.findViewById(R.id.btn_positive_accept);
-                    btn_ok.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialogOk.dismiss();
-                            name.setText("");
-                            phone_number.setText("");
-                            person_id.setText("");
-                            dialog.dismiss();
-
-                        }
-                    });
-                    dialogOk.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialogOk.show();*/
-                    ;
-
-
-                    dialog.dismiss();
-                    payment(10000L);
-
-
-
-                }
-
-            });
-            nagetive.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-               /*     Dialog dialogDenide = new Dialog(Sell_whith_Khobre.this);
-                    dialogDenide.setContentView(R.layout.layout_denid_dialog);
-                    btn_ok = dialogDenide.findViewById(R.id.btn_positive_denide);
-                    btn_ok.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v) {
-                            dialogDenide.dismiss();
-                        }
-                    });
-                    dialogDenide.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                    dialogDenide.show();*/
-                    dialog.dismiss();
-                }
-            });
-
-            dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            dialog.show();
 
 
         }
