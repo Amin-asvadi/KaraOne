@@ -1,0 +1,16 @@
+android {
+  buildTypes {
+    // After defining debug, release, add the following
+    releaseDebugKey {
+      // Use the release setting
+      initWith release
+    }
+  }
+
+  signingConfigs {
+    releaseDebugKey {
+      // Use the debug signature
+      initWith debug
+    }
+  }
+}
