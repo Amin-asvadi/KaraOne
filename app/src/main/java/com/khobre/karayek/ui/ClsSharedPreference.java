@@ -118,6 +118,7 @@ public class ClsSharedPreference {
     private static final String BASCKET_LIST_EXPIRE = "bascket_list_expire";
     private static final String IS_FIRST_TIME_LAUNCH = "IsFirstTimeLaunch";
     private static final String IS_FIRST_TIME_LAUNCH_MAIN = "IsFirstTimeLaunch_main";
+    private static final String IS_FIRST_TIME_LAUNCH_INFO = "IsFirstTimeLaunchInfo";
 
 
     private SharedPreferences pref;
@@ -137,6 +138,15 @@ public class ClsSharedPreference {
 
     public void setFirstTimeLaunch(boolean isFirstTime) {
         editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
+        editor.commit();
+    }
+
+    public boolean isFirstTimeLaunchّInfo() {
+        return pref.getBoolean(IS_FIRST_TIME_LAUNCH_INFO, true);
+    }
+
+    public void setFirstTimeLaunchInfo(boolean isFirstTime) {
+        editor.putBoolean(IS_FIRST_TIME_LAUNCH_INFO, isFirstTime);
         editor.commit();
     }
 
