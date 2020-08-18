@@ -212,9 +212,9 @@ call.enqueue(new Callback<ResponseBody>() {
             ZarinPal purchase=ZarinPal.getPurchase(Sell_whith_Khobre.this);
             PaymentRequest paymentRequest=ZarinPal.getPaymentRequest();
             paymentRequest.setMerchantID("f9808e34-5540-11ea-a2a5-000c295eb8fc");
-            paymentRequest.setAmount(30000L);
+            paymentRequest.setAmount(50000L);
             paymentRequest.setCallbackURL("retuern://zarinpalpayment");
-            paymentRequest.setDescription("پرداخت تست");
+            paymentRequest.setDescription("پرداخت");
             purchase.startPayment(paymentRequest, new OnCallbackRequestPaymentListener() {
                 @Override
                 public void onCallbackResultPaymentRequest(int status, String authority, Uri paymentGatewayUri, Intent intent) {
