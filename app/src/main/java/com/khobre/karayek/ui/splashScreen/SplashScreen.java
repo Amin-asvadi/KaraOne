@@ -18,6 +18,7 @@ import com.khobre.karayek.MainActivity;
 import com.khobre.karayek.R;
 import com.khobre.karayek.ui.ClsSharedPreference;
 import com.khobre.karayek.ui.databse.DbSql;
+import com.khobre.karayek.ui.model.Price;
 import com.khobre.karayek.ui.sahmList.SahamListInterFace;
 import com.khobre.karayek.ui.sahmList.SahamListModel;
 
@@ -38,6 +39,7 @@ public class SplashScreen extends AppCompatActivity {
     SahamListModel sahamListModel;
     ClsSharedPreference prefManager;
     ArrayList<SahamListModel> sahamListItems = new ArrayList<>();
+    List<Price> pricesItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +71,7 @@ public class SplashScreen extends AppCompatActivity {
 
         } else {
             requestToServer();
+
          /*   Toast.makeText(this, "checkInternetConnection", Toast.LENGTH_SHORT).show();
             splash_internet_connect.setVisibility(View.GONE);
             spalsh_internet_is_not.setVisibility(View.VISIBLE);
@@ -91,37 +94,55 @@ public class SplashScreen extends AppCompatActivity {
         finish();
 
     }
+private void priceRequest(int status){
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("http://45.149.77.68/saham_edalat/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
 
+    SahamListInterFace priceInterface = retrofit.create(SahamListInterFace.class);
+
+    Call<List<Price>> call = priceInterface.getPrice();
+    call.enqueue(new Callback<List<Price>>() {
+        @Override
+        public void onResponse(Call<List<Price>> call, Response<List<Price>> response) {
+            if (response.isSuccessful()){
+                Price price = new Price();
+                List<Price> prices = response.body();
+                
+                price.setPrice(prices.get(0).getPrice());
+              Toast.makeText(SplashScreen.this, "دریافت شد", Toast.LENGTH_SHORT).show();
+                Log.e(" Connect","Connect To The Server");
+                Toast.makeText(SplashScreen.this, prices.get(0).getPrice(), Toast.LENGTH_SHORT).show();
+if (status == 1){
+    Toast.makeText(SplashScreen.this, "دیتابیس ایجاد شد", Toast.LENGTH_SHORT).show();
+    dbSQL.InsertPrice(new Price(prices.get(0).getPrice()));
+
+
+
+}else if (status == 2) {
+    dbSQL.Update_price(new Price(prices.get(0).getPrice()),1);
+    Toast.makeText(SplashScreen.this, "دیتابیس بروزرسانی شد", Toast.LENGTH_SHORT).show();
+}
+
+            }else {
+                Toast.makeText(SplashScreen.this, "دریافت نشد", Toast.LENGTH_SHORT).show();
+
+                Log.e("Cannot Connect","Cannot Connect To The Server");
+            }
+        }
+
+        @Override
+        public void onFailure(Call<List<Price>> call, Throwable t) {
+            Toast.makeText(SplashScreen.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+            Log.e("OnFailure",t.getMessage());
+        }
+    });
+
+
+}
     private void requestToServer() {
         prefManager = new ClsSharedPreference(this);
-		/*Retrofit retrofit = new Retrofit.Builder()
-				.baseUrl("http://mashhadburse.ir/kara1/client/v1/api/")
-				.addConverterFactory(GsonConverterFactory.create())
-				.build();
-		SahamListInterFace GroupService = retrofit.create(SahamListInterFace.class);
-		Call<List<SahamListModel>> call = GroupService.getSahamList();
-
-		call.enqueue(new Callback<List<SahamListModel>>() {
-			@Override
-			public void onResponse(Call<List<SahamListModel>> call, Response<List<SahamListModel>> response) {
-
-				if (response.isSuccessful()){
-
-					Toast.makeText(SplashScreen.this, "بروزرسانی انجام شد", Toast.LENGTH_SHORT).show();
-				}else {
-					Log.e("ERROR",String.valueOf(response.code()));
-					Toast.makeText(SplashScreen.this, String.valueOf(response.code()), Toast.LENGTH_SHORT).show();
-
-				}
-			}
-
-			@Override
-			public void onFailure(Call<List<SahamListModel>> call, Throwable t) {
-				Toast.makeText(SplashScreen.this, t.getMessage(), Toast.LENGTH_SHORT).show();
-
-			}
-		});*/
-
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("http://45.149.77.68/saham_edalat/")
@@ -135,6 +156,7 @@ public class SplashScreen extends AppCompatActivity {
             public void onResponse(Call<List<SahamListModel>> call, Response<List<SahamListModel>> response) {
                 sahamListModel = new SahamListModel();
                 if (response.isSuccessful()) {
+
                     prefManager = new ClsSharedPreference(SplashScreen.this);
                     List<SahamListModel> saham_Live = response.body();
                     sahamListItems = (ArrayList<SahamListModel>) saham_Live;
@@ -147,6 +169,7 @@ public class SplashScreen extends AppCompatActivity {
                     sahamListModel.setSum_price(String.valueOf(sum));
                     if (prefManager.isFirstTimeLaunch()) {
                         prefManager.setFirstTimeLaunch(false);
+                        priceRequest(1);
                         for (int j = 0; j < saham_Live.size(); j++) {
                             sahamListModel.setSum_price(String.valueOf(sum));
                             int stockValue = (Integer.valueOf(saham_Live.get(j).getCount()) * Integer.valueOf(saham_Live.get(j).getLivePrice()));
@@ -157,6 +180,7 @@ public class SplashScreen extends AppCompatActivity {
                                     , String.valueOf(stockValue), String.valueOf(sum)));
                         }
                         for (int j = 0; j < saham_Live.size(); j++) {
+
                             //sahamListModel.setSum_price(String.valueOf(sum));
                             int multySum = (sum * 2);
                             int stockValue = (Integer.valueOf(saham_Live.get(j).getCount()) * Integer.valueOf(saham_Live.get(j).getLivePrice()));
@@ -170,7 +194,7 @@ public class SplashScreen extends AppCompatActivity {
 
                         }
                     } else {
-
+                        priceRequest(2);
                         for (int j = 0; j < saham_Live.size(); j++) {
                             //sahamListModel.setSum_price(String.valueOf(sum));
                             int multySum = (sum * 2);
@@ -197,7 +221,14 @@ public class SplashScreen extends AppCompatActivity {
                     goToActivity();
 
 
-                } else {
+                }
+                else if(response.code() == 500){
+
+
+                    Toast.makeText(SplashScreen.this, "ارتباط با سرور انجام نشد", Toast.LENGTH_SHORT).show();
+
+                }
+                else {
 
                     if (!prefManager.isFirstTimeLaunch()) {
 
@@ -248,7 +279,7 @@ public class SplashScreen extends AppCompatActivity {
                 }
                 else {
 
-                    Toast.makeText(SplashScreen.this, t.getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SplashScreen.this,"بروزرسانی انجام نشد" , Toast.LENGTH_SHORT).show();
 
                 }
 

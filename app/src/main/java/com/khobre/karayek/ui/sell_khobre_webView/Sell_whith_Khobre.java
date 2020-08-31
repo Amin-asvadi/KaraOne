@@ -12,6 +12,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -24,6 +25,7 @@ import com.khobre.karayek.ui.Network.ApiClient;
 import com.khobre.karayek.ui.Network.RetrofitApiInterface;
 import com.khobre.karayek.ui.databse.DbSql;
 import com.khobre.karayek.ui.model.PaymentModel;
+import com.khobre.karayek.ui.model.Price;
 import com.khobre.karayek.ui.model.Users;
 import com.khobre.karayek.ui.sahmList.SahamListModel;
 import com.zarinpal.ewallets.purchase.OnCallbackRequestPaymentListener;
@@ -54,9 +56,11 @@ public class Sell_whith_Khobre extends AppCompatActivity {
     Uri  data;
     Context context = this;
     private DbSql dbSQL = new DbSql(context);
-    private List<PaymentModel> paymentModelsItems = new ArrayList<>();
+    private List<Price> paymentModelsItems = new ArrayList<>();
     String uri = "http://45.149.77.68/saham_edalat/";
     RetrofitApiInterface request;
+    int price;
+    TextView priceText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,6 +71,8 @@ public class Sell_whith_Khobre extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+        paymentModelsItems = dbSQL.ShowPrice();
+        price = Integer.valueOf(paymentModelsItems.get(0).getPrice());
 
 
         init();
@@ -203,7 +209,7 @@ call.enqueue(new Callback<ResponseBody>() {
     }
     private void    ShowDatabase(){
 
-        paymentModelsItems = dbSQL.ShowPersonPayment();
+
 
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
@@ -212,7 +218,7 @@ call.enqueue(new Callback<ResponseBody>() {
             ZarinPal purchase=ZarinPal.getPurchase(Sell_whith_Khobre.this);
             PaymentRequest paymentRequest=ZarinPal.getPaymentRequest();
             paymentRequest.setMerchantID("f9808e34-5540-11ea-a2a5-000c295eb8fc");
-            paymentRequest.setAmount(50000L);
+            paymentRequest.setAmount(price);
             paymentRequest.setCallbackURL("retuern://zarinpalpayment");
             paymentRequest.setDescription("پرداخت");
             purchase.startPayment(paymentRequest, new OnCallbackRequestPaymentListener() {
@@ -263,12 +269,13 @@ call.enqueue(new Callback<ResponseBody>() {
                 dialog.setContentView(R.layout.layout_alert_positive_or_nagetive);
                 positve = dialog.findViewById(R.id.btn_positive);
                 nagetive = dialog.findViewById(R.id.btn_nagetive);
+                /////// send to payment method///////////
+                priceText = dialog.findViewById(R.id.txt_price);
+                        priceText.setText(String.valueOf(price));
                 positve.setOnClickListener(new View.OnClickListener() {
                     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
                     @Override
                     public void onClick(View v) {
-                        /////// send to payment method///////////
-
 
 
 

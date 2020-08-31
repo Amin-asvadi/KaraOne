@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.khobre.karayek.ui.model.PaymentModel;
+import com.khobre.karayek.ui.model.Price;
 import com.khobre.karayek.ui.sahmList.SahamListModel;
 
 import java.util.ArrayList;
@@ -43,6 +44,12 @@ public class DbSql extends SQLiteOpenHelper {
     public static  final String PERSON_NAME="PERSON_NAME";
     public static  final String PERSON_PHONE="PERSON_PHONE";
     public static final String PERSON_ID="PERSON_ID";
+
+
+    public static final String PRICE_TABLE = "PRICETABLE";
+    public static final String PRICE_ID = "PID";
+    public static final String PRICE_SAHM = "PRICE";
+
 
 
 
@@ -80,14 +87,21 @@ public class DbSql extends SQLiteOpenHelper {
                             + PERSON_PHONE + " TEXT,"
                             + PERSON_ID + " TEXT);";
 
+                    String PRICE ="CREATE TABLE " + PRICE_TABLE + "(" + PRICE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                            + PRICE_SAHM + " TEXT);";
+
+
+
                     db.execSQL(SAHAMLIST);
                     db.execSQL(SAHAMLIST_ONE);
                     db.execSQL(PERSON_INFO);
+                    db.execSQL(PRICE);
                 }
                 public void revert(SQLiteDatabase db) {
                     db.execSQL("DROP TABLE " + TABLENAME + ";");
                     db.execSQL("DROP TABLE " + TABLENAME_ONE + ";");
                     db.execSQL("DROP TABLE " + PAYMENT_TABLE + ";");
+                    db.execSQL("DROP TABLE " + PRICE_TABLE + ";");
                 }
             }
             , new Patch() {
@@ -179,6 +193,14 @@ public class DbSql extends SQLiteOpenHelper {
         SQLiteDatabase database = this.getWritableDatabase();
         database.delete(TABLENAME, "id=" + id, null);
     }
+    public void Update_price(Price data, int id)
+    {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PRICE_SAHM, data.getPrice());
+        database.update(PRICE_TABLE,values,"PID=" + id,null);
+        database.close();
+    }
     public void Update_One(SahamListModel data, int id)
     {
         SQLiteDatabase database = this.getWritableDatabase();
@@ -251,6 +273,34 @@ public class DbSql extends SQLiteOpenHelper {
         long id = database.insert(PAYMENT_TABLE, null, values);
         database.close();
         return id;
+    }
+    public long InsertPrice(Price data)
+    {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PRICE_SAHM, data.getPrice());
+
+        long id = database.insert(PRICE_TABLE, null, values);
+        database.close();
+        return id;
+    }
+    public ArrayList<Price> ShowPrice()
+    {
+        ArrayList<Price> data = new ArrayList<>();
+        String query = "SELECT * FROM " + PRICE_TABLE;
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                Price modelItem = new Price();
+                modelItem.setId(Integer.parseInt(cursor.getString(0)));
+                modelItem.setPrice(cursor.getString(1));
+                data.add(modelItem);
+            }
+            while (cursor.moveToNext());
+        }
+
+        return data;
     }
 
     public ArrayList<PaymentModel> ShowPersonPayment()
