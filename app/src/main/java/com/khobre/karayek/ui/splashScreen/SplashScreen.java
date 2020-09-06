@@ -111,22 +111,21 @@ private void priceRequest(int status){
                 List<Price> prices = response.body();
                 
                 price.setPrice(prices.get(0).getPrice());
-              Toast.makeText(SplashScreen.this, "دریافت شد", Toast.LENGTH_SHORT).show();
                 Log.e(" Connect","Connect To The Server");
-                Toast.makeText(SplashScreen.this, prices.get(0).getPrice(), Toast.LENGTH_SHORT).show();
+
 if (status == 1){
-    Toast.makeText(SplashScreen.this, "دیتابیس ایجاد شد", Toast.LENGTH_SHORT).show();
+
     dbSQL.InsertPrice(new Price(prices.get(0).getPrice()));
 
 
 
 }else if (status == 2) {
     dbSQL.Update_price(new Price(prices.get(0).getPrice()),1);
-    Toast.makeText(SplashScreen.this, "دیتابیس بروزرسانی شد", Toast.LENGTH_SHORT).show();
+;
 }
 
             }else {
-                Toast.makeText(SplashScreen.this, "دریافت نشد", Toast.LENGTH_SHORT).show();
+
 
                 Log.e("Cannot Connect","Cannot Connect To The Server");
             }
@@ -134,7 +133,6 @@ if (status == 1){
 
         @Override
         public void onFailure(Call<List<Price>> call, Throwable t) {
-            Toast.makeText(SplashScreen.this, t.getMessage(), Toast.LENGTH_SHORT).show();
             Log.e("OnFailure",t.getMessage());
         }
     });

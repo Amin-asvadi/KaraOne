@@ -178,7 +178,6 @@ public class DbSql extends SQLiteOpenHelper {
         for (int i = oldVersion; i < newVersion; i++) {
             PATCHES[i].apply(db);
         }
-
     }
 
     @Override
@@ -187,6 +186,7 @@ public class DbSql extends SQLiteOpenHelper {
             PATCHES[i].revert(db);
         }
     }
+
 
     public void Delete(int id)
     {

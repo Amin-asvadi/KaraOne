@@ -77,20 +77,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
 
         init();
 
-      /*  Uri data = getIntent().getData();
-        ZarinPal.getPurchase(this).verificationPayment(data, new OnCallbackVerificationPaymentListener() {
-            @Override
-            public void onCallbackResultVerificationPayment(boolean isPaymentSuccess, String refID, PaymentRequest paymentRequest) {
-                if (isPaymentSuccess) {
-                    Toast.makeText(Sell_whith_Khobre.this, "پرداخت با موفقیت انجام شد", Toast.LENGTH_SHORT).show();
-
-                } else {
-                    Toast.makeText(Sell_whith_Khobre.this, "پرداخت با وفقیت انجام نشد", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
-*/
-        data =getIntent().getData();
+  data =getIntent().getData();
 
         if (data!=null) {
             ZarinPal.getPurchase(this).verificationPayment(data, new OnCallbackVerificationPaymentListener() {
@@ -123,10 +110,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             dialogacc.dismiss();
-                      /*      name.setText("");
-                            phone_number.setText("");
-                            person_id.setText("");*/
-                            //dialog.dismiss();
+
 
                         }
                     });
@@ -146,9 +130,6 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                         });
                         dialogDenide.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                         dialogDenide.show();
-                  /*      Toast.makeText(Sell_whith_Khobre.this,  "ناموفق" , Toast.LENGTH_SHORT).show();*/
-                        //  Log.i("TAG", refID);
-                        // MainActivity.this.getIntent().setData(null);
                     }
                 }
 
@@ -213,29 +194,37 @@ call.enqueue(new Callback<ResponseBody>() {
 
     }
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
-    private void payment(){
-        try {
-            ZarinPal purchase=ZarinPal.getPurchase(Sell_whith_Khobre.this);
-            PaymentRequest paymentRequest=ZarinPal.getPaymentRequest();
-            paymentRequest.setMerchantID("f9808e34-5540-11ea-a2a5-000c295eb8fc");
-            paymentRequest.setAmount(price);
-            paymentRequest.setCallbackURL("retuern://zarinpalpayment");
-            paymentRequest.setDescription("پرداخت");
-            purchase.startPayment(paymentRequest, new OnCallbackRequestPaymentListener() {
-                @Override
-                public void onCallbackResultPaymentRequest(int status, String authority, Uri paymentGatewayUri, Intent intent) {
-                    if (status==100){
+ private void payment(){
+       try {
+           ZarinPal purchase=ZarinPal.getPurchase(Sell_whith_Khobre.this);
+           PaymentRequest paymentRequest=ZarinPal.getPaymentRequest();
+           paymentRequest.setMerchantID("f9808e34-5540-11ea-a2a5-000c295eb8fc");
+           paymentRequest.setAmount(price);
+           paymentRequest.setCallbackURL("retuern://zarinpalpayment");
+           paymentRequest.setDescription("پرداخت");
+           purchase.startPayment(paymentRequest, new OnCallbackRequestPaymentListener() {
+               @Override
+               public void onCallbackResultPaymentRequest(int status, String authority, Uri paymentGatewayUri, Intent intent) {
+                   if (status==100){
 
-                        startActivity(intent);
-                        // Log.i("TAG","succes");
-                    }else {
-                        Toast.makeText(Sell_whith_Khobre.this, "خطا در ایجاد درخواست", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+                       startActivity(intent);
+                       // Log.i("TAG","succes");
+                   }else {
+                       Toast.makeText(Sell_whith_Khobre.this, "خطا در ایجاد درخواست", Toast.LENGTH_SHORT).show();
+                   }
+               }
+           });
+       }catch (Exception e){
+           e.printStackTrace();
+       }
+
+   }
+
+    private void bazaarPayment(){
+
+
+
+
 
     }
     private void mypayment() {
@@ -281,7 +270,11 @@ call.enqueue(new Callback<ResponseBody>() {
 
 
                         dialog.dismiss();
-                        payment();
+
+                        // This is for ZarinPal Payment
+                       // payment();
+
+                        //This is for Bazaar Payment
 
 
 
