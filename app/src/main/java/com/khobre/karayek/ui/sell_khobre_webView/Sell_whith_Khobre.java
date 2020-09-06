@@ -193,7 +193,6 @@ call.enqueue(new Callback<ResponseBody>() {
 
 
     }
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
  private void payment(){
        try {
            ZarinPal purchase=ZarinPal.getPurchase(Sell_whith_Khobre.this);
