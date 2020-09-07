@@ -31,16 +31,6 @@
             android:name=".ui.sell_khobre_webView.Sell_whith_Khobre"
             android:screenOrientation="portrait">
 
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="zarinpalpayment"
-                    android:scheme="retuern" />
-            </intent-filter>
         </activity>
         <uses-library android:name="org.apache.http.legacy" android:required="false"/>
         <activity
@@ -49,15 +39,6 @@
         <activity
             android:name=".ui.inquirySahamActivity.InquirySahamActvity"
             android:screenOrientation="portrait" />
-        <activity
-            android:name=".BuyActivity"
-            android:screenOrientation="portrait">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
         <activity
             android:name=".ui.ejectSaham.EjectSahamActivity"
             android:screenOrientation="portrait" />
@@ -73,7 +54,11 @@
         <activity
             android:name=".ui.splashScreen.SplashScreen"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".ui.sahmList.SahamListActivity" />
         <activity
