@@ -80,7 +80,7 @@ public class Security {
             Log.e(TAG, "Invalid key specification.");
             throw new IllegalArgumentException(e);
         } catch (Base64DecoderException e) {
-            Log.e(TAG, "Base64 decoding failed.");
+            Log.e(TAG, "Base64 decoding failed." + e.getMessage());
             throw new IllegalArgumentException(e);
         }
     }

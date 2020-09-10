@@ -103,8 +103,9 @@ public class IabHelper {
     public static final int IABHELPER_UNKNOWN_ERROR = -1008;
     public static final int IABHELPER_SUBSCRIPTIONS_NOT_AVAILABLE = -1009;
     public static final int IABHELPER_INVALID_CONSUMPTION = -1010;
-    public static final String RESPONSE_CODE = "RESPONSE_CODE";
+
     // Keys for the responses from InAppBillingService
+    public static final String RESPONSE_CODE = "RESPONSE_CODE";
     public static final String RESPONSE_GET_SKU_DETAILS_LIST = "DETAILS_LIST";
     public static final String RESPONSE_BUY_INTENT = "BUY_INTENT";
     public static final String RESPONSE_INAPP_PURCHASE_DATA = "INAPP_PURCHASE_DATA";
@@ -304,24 +305,6 @@ public class IabHelper {
         launchPurchaseFlow(act, sku, ITEM_TYPE_SUBS, requestCode, listener, extraData);
     }
 
-    /**
-     * Initiate the UI flow for an in-app purchase. Call this method to initiate an in-app purchase,
-     * which will involve bringing up the Google Play screen. The calling activity will be paused while
-     * the user interacts with Google Play, and the result will be delivered via the activity's
-     * {@link android.app.Activity#onActivityResult} method, at which point you must call
-     * this object's {@link #handleActivityResult} method to continue the purchase flow. This method
-     * MUST be called from the UI thread of the Activity.
-     *
-     * @param act         The calling activity.
-     * @param sku         The sku of the item to purchase.
-     * @param itemType    indicates if it's a product or a subscription (ITEM_TYPE_INAPP or ITEM_TYPE_SUBS)
-     * @param requestCode A request code (to differentiate from other responses --
-     *                    as in {@link android.app.Activity#startActivityForResult}).
-     * @param listener    The listener to notify when the purchase process finishes
-     * @param extraData   Extra data (developer payload), which will be returned with the purchase data
-     *                    when the purchase completes. This extra data will be permanently bound to that purchase
-     *                    and will always be returned when the purchase is queried.
-     */
     public void launchPurchaseFlow(Activity act, String sku, String itemType, int requestCode,
                                    OnIabPurchaseFinishedListener listener, String extraData) {
         checkNotDisposed();

@@ -13,13 +13,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="قیمت های سهام از سایت سازمان بورس دریافت میشود"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/include4" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tab_layout_singel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/include4"
+        app:layout_constraintTop_toBottomOf="@+id/textView12"
         app:tabIndicatorColor="@color/colorPrimary"
         app:tabSelectedTextColor="#000"
         app:tabTextColor="#979797">
