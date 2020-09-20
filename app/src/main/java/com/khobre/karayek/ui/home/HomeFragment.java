@@ -24,6 +24,7 @@ import com.khobre.karayek.R;
 import com.khobre.karayek.ui.ClsSharedPreference;
 import com.khobre.karayek.ui.components.Global;
 import com.khobre.karayek.ui.databse.DbSql;
+import com.khobre.karayek.ui.finalPayment.FinalPayment;
 import com.khobre.karayek.ui.inquirySahamActivity.InquirySahamActvity;
 import com.khobre.karayek.ui.questactivity.QuestionActivity;
 import com.khobre.karayek.ui.sahamListTabs.SahamListTabsActivity;
@@ -47,6 +48,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 	SahamListModel sahamListModel;
 	private List<SahamListModel> sahamListItems = new ArrayList<>();
 	private DbSql dbSQL ;
+	ImageView btn_payment;
 	ClsSharedPreference prefManager_main;
 	View root;
 	TickerView tv_saham_price;
@@ -67,6 +69,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 		prefManager_main = new ClsSharedPreference(getContext());
 		salb_card = root.findViewById(R.id.salb_pop);
 		btn_pop_info = root.findViewById(R.id.img_pop_info);
+		btn_payment = root.findViewById(R.id.btn_payment);
+		btn_payment.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(getActivity(), FinalPayment.class);
+				startActivity(intent);
+			}
+		});
 		btn_pop_info.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {

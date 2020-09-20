@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.khobre.karayek.ui.model.FInalPaymentModel;
 import com.khobre.karayek.util.IabHelper;
 import com.khobre.karayek.util.IabResult;
 import com.khobre.karayek.util.Inventory;
@@ -210,6 +211,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                 return;
             } else if (purchase.getSku().equals(SKU_PREMIUM)) {
                mHelper.consumeAsync(purchase, mConsumeFinishedListener);
+
             }
         }
     };
@@ -328,6 +330,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                        String payload = "payload-string";
                         mHelper.launchPurchaseFlow(Sell_whith_Khobre.this, SKU_PREMIUM, RC_REQUEST,
                                 mPurchaseFinishedListener, payload);
+                        dbSQL.InsertToFinalPayment(new FInalPaymentModel(nameStr,phoneStr,personIdStr,"پرداخت نشده"));
                         dialog.dismiss();
 
 

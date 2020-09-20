@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,6 +43,14 @@ public class FinalPaymentAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         vh.txt_phone_number.setText(model.getNumber());
         vh.txt_id_number.setText(model.getId_number());
         vh.txt_status.setText(model.getStatus());
+        if (model.getStatus().equals("پرداخت نشده")){
+
+            Toast.makeText(context, "پرداخت نشده", Toast.LENGTH_SHORT).show();
+            
+        }else {
+
+            Toast.makeText(context, "شد", Toast.LENGTH_SHORT).show();
+        }
 
 
     }

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.khobre.karayek.ui.finalBuy.FinalPayment">
-    <?xml version="1.0" encoding="utf-8"?>
+    tools:context="com.khobre.karayek.ui.finalPayment.FinalPayment">
+
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView3"

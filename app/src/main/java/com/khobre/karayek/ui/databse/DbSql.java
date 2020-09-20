@@ -8,6 +8,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.khobre.karayek.ui.model.FInalPaymentModel;
 import com.khobre.karayek.ui.model.PaymentModel;
 import com.khobre.karayek.ui.model.Price;
 import com.khobre.karayek.ui.sahmList.SahamListModel;
@@ -50,7 +51,12 @@ public class DbSql extends SQLiteOpenHelper {
     public static final String PRICE_ID = "PID";
     public static final String PRICE_SAHM = "PRICE";
 
-
+    public static final String PAYMENT_TABLES = "PAYMENT_TABLES";
+    public static final String PAYMENT_ID =  "PAYMENT_ID";
+    public static final String PAYMENT_NAME = "PAYMENT_NAME";
+    public static final String PAYMENT_NUMBER = "PAYMENT_NUMBER";
+    public static final String PAYMENT_ID_NUMBER = "PAYMENT_ID_NUMBER";
+    public static final String PAYMENT_STATUS = "PAYMENT_STATUS";
 
 
     private interface Patch {
@@ -90,18 +96,24 @@ public class DbSql extends SQLiteOpenHelper {
                     String PRICE ="CREATE TABLE " + PRICE_TABLE + "(" + PRICE_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                             + PRICE_SAHM + " TEXT);";
 
-
+                    String PAYMENTLIST ="CREATE TABLE " + PAYMENT_TABLES + "(" + PAYMENT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
+                            + PAYMENT_NAME + " TEXT,"
+                            + PAYMENT_NUMBER + " TEXT,"
+                            + PAYMENT_ID_NUMBER + " TEXT,"
+                            + PAYMENT_STATUS + " TEXT);";
 
                     db.execSQL(SAHAMLIST);
                     db.execSQL(SAHAMLIST_ONE);
                     db.execSQL(PERSON_INFO);
                     db.execSQL(PRICE);
+                    db.execSQL(PAYMENTLIST);
                 }
                 public void revert(SQLiteDatabase db) {
                     db.execSQL("DROP TABLE " + TABLENAME + ";");
                     db.execSQL("DROP TABLE " + TABLENAME_ONE + ";");
                     db.execSQL("DROP TABLE " + PAYMENT_TABLE + ";");
                     db.execSQL("DROP TABLE " + PRICE_TABLE + ";");
+                    db.execSQL("DROP TABLE " + PAYMENT_TABLES + ";");
                 }
             }
             , new Patch() {
@@ -262,6 +274,35 @@ public class DbSql extends SQLiteOpenHelper {
         database.close();
         return id;
     }
+    public long InsertToFinalPayment(FInalPaymentModel data)
+    {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PAYMENT_NAME, data.getName());
+        values.put(PAYMENT_NUMBER, data.getNumber());
+        values.put(PAYMENT_ID_NUMBER, data.getId_number());
+        values.put(PAYMENT_STATUS, data.getStatus());
+        long id = database.insert(PAYMENT_TABLES, null, values);
+        database.close();
+        return id;
+    }
+
+    public void UpadteFinalPayment(FInalPaymentModel data, int id)
+    {
+        SQLiteDatabase database = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+
+        values.put(PAYMENT_NAME, data.getName());
+        values.put(PAYMENT_NUMBER, data.getNumber());
+        values.put(PAYMENT_ID_NUMBER, data.getId_number());
+        values.put(PAYMENT_STATUS, data.getStatus());
+
+
+        database.update(TABLENAME,values,"PAYMENT_ID=" + id,null);
+        database.close();
+    }
+
+
     public long InsertPersonPayment(PaymentModel data)
     {
         SQLiteDatabase database = this.getWritableDatabase();
@@ -273,6 +314,28 @@ public class DbSql extends SQLiteOpenHelper {
         long id = database.insert(PAYMENT_TABLE, null, values);
         database.close();
         return id;
+    }
+    public ArrayList<FInalPaymentModel> ShowPayment()
+    {
+        ArrayList<FInalPaymentModel> data = new ArrayList<>();
+        String query = "SELECT * FROM " + PAYMENT_TABLES;
+        SQLiteDatabase database = this.getWritableDatabase();
+        Cursor cursor = database.rawQuery(query, null);
+        if (cursor.moveToFirst()) {
+            do {
+                FInalPaymentModel modelItem = new FInalPaymentModel();
+                modelItem.setId(Integer.parseInt(cursor.getString(0)));
+                modelItem.setName(cursor.getString(1));
+                modelItem.setNumber(cursor.getString(2));
+                modelItem.setId_number(cursor.getString(3));
+                modelItem.setStatus(cursor.getString(4));
+
+                data.add(modelItem);
+            }
+            while (cursor.moveToNext());
+        }
+
+        return data;
     }
     public long InsertPrice(Price data)
     {

@@ -16,7 +16,7 @@
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.finalBuy.FinalPayment"></activity>
+        <activity android:name=".ui.finalPayment.FinalPayment"></activity>
         <activity android:name=".ui.abouteUs.About" />
         <activity android:name=".ui.sell_khobre_webView.SellKhobrePaymentWebActivity" />
         <activity
