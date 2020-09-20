@@ -8,18 +8,16 @@
     <uses-permission android:name="com.farsitel.bazaar.permission.PAY_THROUGH_BAZAAR" />
 
     <application
-
-
+        android:name=".ui.SampleApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="false"
         android:theme="@style/AppTheme"
-        android:name=".ui.SampleApplication"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.abouteUs.About"></activity>
-
+        <activity android:name=".ui.finalBuy.FinalPayment"></activity>
+        <activity android:name=".ui.abouteUs.About" />
         <activity android:name=".ui.sell_khobre_webView.SellKhobrePaymentWebActivity" />
         <activity
             android:name=".ui.sahamListTabs.SahamListTabsActivity"
@@ -29,10 +27,12 @@
             android:screenOrientation="portrait" />
         <activity
             android:name=".ui.sell_khobre_webView.Sell_whith_Khobre"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"></activity>
 
-        </activity>
-        <uses-library android:name="org.apache.http.legacy" android:required="false"/>
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
         <activity
             android:name=".ui.questactivity.QuestionActivity"
             android:screenOrientation="portrait" />

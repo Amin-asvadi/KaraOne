@@ -281,7 +281,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="فروش توسط مشاوران خبره"
+                    android:text="فروش توسط مشاوران خبره کارگزاری"
                     android:textColor="#000"
                     android:textSize="18sp"
                     app:layout_constraintBottom_toBottomOf="parent"

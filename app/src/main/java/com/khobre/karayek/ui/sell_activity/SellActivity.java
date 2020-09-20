@@ -270,4 +270,9 @@ if(prefManager.isFirstTimeLaunchّInfo()){
             }
         }, 2000); // ----Main Activity Start After 3 Sec.
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 }

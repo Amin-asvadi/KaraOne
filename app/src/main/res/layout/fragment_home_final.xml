@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:background="@color/main_back"
     style="@style/AppTheme.AppBarOverlay"
@@ -214,6 +215,7 @@
 
 
         <LinearLayout
+            android:visibility="gone"
             android:id="@+id/btn_inquiry_saham"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -247,6 +249,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
+
                     android:layout_height="match_parent">
 
                     <ImageView
@@ -290,7 +293,7 @@
             app:layout_constraintEnd_toEndOf="@+id/btn_inquiry_saham"
             app:layout_constraintStart_toStartOf="@+id/btn_inquiry_saham"
             app:layout_constraintTop_toBottomOf="@+id/btn_inquiry_saham"
-            app:layout_constraintVertical_bias="0.050000012">
+            app:layout_constraintVertical_bias="0.100000024">
 
 
             <LinearLayout
@@ -473,18 +476,19 @@
         </LinearLayout>
 
         <ImageView
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
+            app:layout_constraintDimensionRatio="2.5:1"
             android:layout_height="0dp"
             android:layout_marginTop="5dp"
             android:foregroundGravity="center"
-
+            android:scaleType="fitXY"
             android:src="@drawable/ic_tehroon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/linearLayout7"
-            app:layout_constraintVertical_bias="0.9" />
+            app:layout_constraintVertical_bias="1.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
