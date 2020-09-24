@@ -66,7 +66,7 @@ public class Sell_whith_Khobre extends AppCompatActivity {
 
     // Does the user have the premium upgrade?
     boolean mIsPremium = false;
-
+    private List<FInalPaymentModel> fInalPaymentModelList;
     // (arbitrary) request code for the purchase flow
     static final int RC_REQUEST = 10001 ;
     private static final String TAG = Sell_whith_Khobre.class.getSimpleName() + "TAG";
@@ -81,6 +81,8 @@ public class Sell_whith_Khobre extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mobile_number);
         init();
+        fInalPaymentModelList = new ArrayList<>();
+        fInalPaymentModelList = dbSQL.ShowPayment();
         request = ApiClient.getApiClient(uri).create(RetrofitApiInterface.class);
 
         ActionBar actionBar = getSupportActionBar();
@@ -155,7 +157,6 @@ public class Sell_whith_Khobre extends AppCompatActivity {
             if (result.isFailure()) {
                 // moshkeli dar ertebat ba bazaar pish amad
                 Log.e("TAG", "failed to access bazaar " + result.getMessage());
-                Toast.makeText(context, "خطایی در ارتباط با بازار رخ داد! از وصل بودن اینترنت خود مطمئن شوید", Toast.LENGTH_SHORT).show();
                 return;
             }else {
 
@@ -221,6 +222,11 @@ public class Sell_whith_Khobre extends AppCompatActivity {
                 public void onConsumeFinished(Purchase purchase, IabResult result) {
                     if (result.isSuccess()) {
                         insertToDatabseOnline(nameStr, phoneStr, personIdStr);
+                        for (int i = 0 ; i <fInalPaymentModelList.size();i++){
+
+                            dbSQL.UpadteFinalPayment(new FInalPaymentModel(nameStr,phoneStr,personIdStr,"پرداخت شده"), i + 1);
+                        }
+
                        /* Dialog dialogacc = new Dialog(Sell_whith_Khobre.this);
                         dialogacc.setContentView(R.layout.layout_accepted_dialog);
                         btn_ok = dialogacc.findViewById(R.id.btn_positive_accept);

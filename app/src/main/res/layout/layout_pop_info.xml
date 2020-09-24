@@ -58,6 +58,7 @@
                         android:paddingRight="15sp"
                         android:paddingBottom="15sp"
                       android:text="درباره  ما "
+                        android:padding="5dp"
                         android:textSize="19sp"
                         android:textStyle="bold" />
                     <TextView
@@ -89,10 +90,12 @@
                         android:layout_height="wrap_content"
                         android:justificationMode="inter_word"
                         android:lineSpacingExtra="7dp"
+                        android:padding="5dp"
                         android:text="1-  تمامی خدمات ارائه شده در نرم افزار کارا 1 برای آسان سازی فرآیند مدیریت سهام عدالت هموطنان عزیز گردآوری شده و این گروه نرم افزاری هیچ گونه مسئولیتی در مورد نحوه فروش کارگزاری انتخاب شده نداشته و تمامی مسئولیتهای فروش و واریز وجه سهام عدالت بر عهده کارگزاری میباشد."
                         android:textSize="17sp" />
 
                     <TextView
+                        android:padding="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical|end"
@@ -102,6 +105,7 @@
                         android:textSize="17sp" />
 
                     <TextView
+                        android:padding="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:justificationMode="inter_word"
@@ -110,6 +114,7 @@
                         android:textSize="17sp" />
 
                     <TextView
+                        android:padding="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:justificationMode="inter_word"
@@ -118,6 +123,7 @@
                         android:textSize="17sp" />
 
                     <TextView
+                        android:padding="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:justificationMode="inter_word"
@@ -130,15 +136,27 @@
                         android:layout_height="wrap_content"
                         android:justificationMode="inter_word"
                         android:lineSpacingExtra="7dp"
+                        android:padding="5dp"
                         android:text="6-   گروه نرم افزاری کارا اختیار هر گونه طراحی مجدد ، ادغام و توقف فعالیت را در هرزمانی برای خود محفوظ دانسته، بنابراین هیچگونه مسئولیتی در قبال زیان احتمالی کاربران متوجه این گروه نمی باشد."
                         android:textSize="17sp" />
 
                     <TextView
+                        android:padding="5dp"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:justificationMode="inter_word"
                         android:lineSpacingExtra="7dp"
+
                         android:text="7- هزینه پرداخت شده برای مشاوره مخصوص یک کد ملی می‌باشد. و مشاوران این مجموعه نیز شامل موارد ذکر شده در بند یک و دو این نامه سلب مسئولیت میگردند."
+                        android:textSize="16sp" />
+                    <TextView
+                        android:padding="5dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:justificationMode="inter_word"
+                        android:lineSpacingExtra="7dp"
+
+                 android:text=""
                         android:textSize="16sp" />
 
                 </LinearLayout>

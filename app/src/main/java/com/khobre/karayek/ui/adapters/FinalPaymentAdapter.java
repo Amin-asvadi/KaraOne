@@ -1,6 +1,7 @@
 package com.khobre.karayek.ui.adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,11 +46,11 @@ public class FinalPaymentAdapter extends RecyclerView.Adapter<RecyclerView.ViewH
         vh.txt_status.setText(model.getStatus());
         if (model.getStatus().equals("پرداخت نشده")){
 
-            Toast.makeText(context, "پرداخت نشده", Toast.LENGTH_SHORT).show();
+            vh.txt_status.setTextColor(Color.parseColor("#F50029"));
             
         }else {
 
-            Toast.makeText(context, "شد", Toast.LENGTH_SHORT).show();
+            vh.txt_status.setTextColor(Color.parseColor("#36ac0b"));
         }
 
 

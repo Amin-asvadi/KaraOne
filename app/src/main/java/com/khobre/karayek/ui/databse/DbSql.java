@@ -298,7 +298,7 @@ public class DbSql extends SQLiteOpenHelper {
         values.put(PAYMENT_STATUS, data.getStatus());
 
 
-        database.update(TABLENAME,values,"PAYMENT_ID=" + id,null);
+        database.update(PAYMENT_TABLES,values,"PAYMENT_ID=" + id,null);
         database.close();
     }
 

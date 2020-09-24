@@ -25,6 +25,7 @@
         app:layout_constraintStart_toStartOf="@+id/ed_input_name"
         app:layout_constraintTop_toBottomOf="@+id/include3"
         app:layout_constraintVertical_bias="0.92" />
+
     <EditText
         android:id="@+id/ed_input_name"
         android:layout_width="0dp"
@@ -32,14 +33,14 @@
         android:background="@drawable/beck_ed_text"
         android:hint="نام و نام خانوادگی"
         android:inputType="text"
-        android:textDirection="rtl"
         android:padding="10dp"
+        android:textDirection="rtl"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="5:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include3"
-        app:layout_constraintVertical_bias="0.100000024" />
+        app:layout_constraintVertical_bias="0.060000002" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -67,7 +68,7 @@
         app:layout_constraintEnd_toEndOf="@+id/ed_input_name"
         app:layout_constraintStart_toStartOf="@+id/ed_input_name"
         app:layout_constraintTop_toBottomOf="@+id/ed_input_name"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -94,34 +95,95 @@
         app:layout_constraintEnd_toEndOf="@+id/ed_phone_number"
         app:layout_constraintStart_toStartOf="@+id/ed_phone_number"
         app:layout_constraintTop_toBottomOf="@+id/ed_phone_number"
-        app:layout_constraintVertical_bias="0.07999998" />
+        app:layout_constraintVertical_bias="0.050000012" />
 
     <Button
         android:id="@+id/btn_buy"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@drawable/back_button"
+        android:clickable="true"
         android:text="@string/next"
         android:textColor="@color/white"
         android:textSize="17sp"
-        android:clickable="true"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintDimensionRatio="3.5:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ed_input_person_id"
-        app:layout_constraintVertical_bias="0.16000003" />
+        app:layout_constraintVertical_bias="0.050000012" />
 
-    <ImageView
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:src="@drawable/ic_daryaft_ettelaat"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:backgroundTint="@color/colorPrimary"
+        app:cardCornerRadius="15dp"
+        app:cardMaxElevation="3dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="2:1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_buy"
-        app:layout_constraintVertical_bias="0.7" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_buy">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/help"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/help2"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/help3"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:justificationMode="inter_word"
+android:paddingLeft="5dp"
+           android:paddingRight="5dp"
+                android:text="@string/help4"
+                android:textColor="@color/white"
+                android:textSize="15dp"
+                android:textStyle="bold" />
+            >
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

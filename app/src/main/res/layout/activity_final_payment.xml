@@ -27,12 +27,13 @@
             android:weightSum="4">
 
             <TextView
+                android:text="وضعیت"
                 android:id="@+id/txt_name_fname"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1.3"
+                android:layout_weight="0.7"
                 android:gravity="center"
-                tools:text="نام و نام خوانوادگی" />
+               />
 
             <View
                 style="@style/DividerVertical"
@@ -44,7 +45,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                tools:text="شماره تماس" />
+                android:text="شماره تماس" />
 
             <View
                 style="@style/DividerVertical"
@@ -57,7 +58,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                tools:text="شماره ملی" />
+                android:text="شماره ملی" />
 
             <View
                 style="@style/DividerVertical"
@@ -67,9 +68,10 @@
                 android:id="@+id/txt_status"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.6"
+                android:layout_weight="1.2"
                 android:gravity="center"
-                tools:text="وضعیت" />
+                android:text="نام و نام خوانوادگی"
+               />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -83,4 +85,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3"
         app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:text="شماره پشتیبانی : 09382310615"
+        android:gravity="center"
+        android:textColor="@color/white"
+        android:textSize="18dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/back_button"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rc_payment_final"
+        app:layout_constraintVertical_bias="0.96" />
 </androidx.constraintlayout.widget.ConstraintLayout>
